@@ -51,4 +51,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
 
+    //intuit for dp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
 }

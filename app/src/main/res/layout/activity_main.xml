@@ -22,11 +22,14 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_35sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/black"
+        app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
+        app:itemIconSize="@dimen/_10sdp"
         app:menu="@menu/btm_nav_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
