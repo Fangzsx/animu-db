@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.viewmodels.AnimeFragmentViewModel
 
@@ -15,12 +16,13 @@ import com.fangzsx.animu_db.viewmodels.AnimeFragmentViewModel
 class AnimeFragment : Fragment() {
     private lateinit var animeFragmentVM : AnimeFragmentViewModel
     private lateinit var binding : FragmentAnimeBinding
+    private lateinit var recommendationsAdapter : RecommendationsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         animeFragmentVM = ViewModelProvider(this).get(AnimeFragmentViewModel::class.java)
-
+        recommendationsAdapter = RecommendationsAdapter()
     }
 
     override fun onCreateView(
@@ -35,9 +37,17 @@ class AnimeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        animeFragmentVM.recommendations.observe(viewLifecycleOwner){
+        animeFragmentVM.recommendations.observe(viewLifecycleOwner){ list ->
+            recommendationsAdapter.differ.submitList(list)
 
         }
+
+        binding.rvRecommendations.apply {
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = recommendationsAdapter
+        }
+
+
 
 
     }

@@ -1,8 +1,10 @@
 package com.fangzsx.animu_db.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.models.recommendation.Entry
 import com.fangzsx.animu_db.retrofit.RetrofitInstance
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class AnimeFragmentViewModel : ViewModel() {
 
-    var recommendations : MutableLiveData<List<Entry>> = MutableLiveData()
+    var recommendations : MutableLiveData<List<Data>> = MutableLiveData()
 
     init {
         getRecommendations()
@@ -20,9 +22,8 @@ class AnimeFragmentViewModel : ViewModel() {
         val response = RetrofitInstance.malAPI.getAnimeRecommendation()
         if(response.isSuccessful){
             response.body()?.let{ list->
-                for(data in list.data){
-                    recommendations.value = data.entry
-                }
+                recommendations.postValue(list.data)
+
             }
         }
     }
