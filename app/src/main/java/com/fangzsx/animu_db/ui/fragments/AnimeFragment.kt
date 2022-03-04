@@ -37,9 +37,7 @@ class AnimeFragment : Fragment() {
         animeFragmentVM.getRecommendations()
         animeFragmentVM.recommendations.observe(viewLifecycleOwner){ list ->
             for(data in list.data){
-                for(entry in data.entry){
-                    Log.i("titles", entry.title)
-                }
+                //data.entry retrieves the list of anime recommended. 100 total recommendation entries
             }
         }
 
