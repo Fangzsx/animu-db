@@ -11,7 +11,11 @@ class AnimeFragmentViewModel : ViewModel() {
 
     var recommendations : MutableLiveData<RecommendationsResponse> = MutableLiveData()
 
-    fun getRecommendations() = viewModelScope.launch {
+    init {
+        getRecommendations()
+    }
+
+    private fun getRecommendations() = viewModelScope.launch {
         val response = RetrofitInstance.malAPI.getAnimeRecommendation()
         if(response.isSuccessful){
             response.body()?.let{ list->

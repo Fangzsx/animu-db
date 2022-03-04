@@ -34,10 +34,13 @@ class AnimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        animeFragmentVM.getRecommendations()
+
         animeFragmentVM.recommendations.observe(viewLifecycleOwner){ list ->
             for(data in list.data){
                 //data.entry retrieves the list of anime recommended. 100 total recommendation entries
+                for(entry in data.entry){
+                    Log.i("titles" , entry.title)
+                }
             }
         }
 
