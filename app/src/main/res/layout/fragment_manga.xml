@@ -29,8 +29,6 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_search"
             android:scaleType="fitCenter"/>
-
-
     </LinearLayout>
 
 

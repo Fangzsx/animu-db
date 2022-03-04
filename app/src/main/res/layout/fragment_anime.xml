@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.AnimeFragment">
+    tools:context=".ui.fragments.AnimeFragment"
+    android:background="@color/black">
 
     <LinearLayout
+        android:id="@+id/ll_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,9 +31,101 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_search"
             android:scaleType="fitCenter"/>
-
-
     </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ll_header"
+        app:layout_constraintStart_toStartOf="@id/ll_header"
+        app:layout_constraintEnd_toEndOf="@id/ll_header">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_recommendations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
+                android:text="Recommendations"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_8sdp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommendations"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_175sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_recommendations"
+                app:layout_constraintStart_toStartOf="@id/tv_recommendations"/>
+            <TextView
+                android:id="@+id/tv_popular_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/rv_recommendations"
+                app:layout_constraintStart_toStartOf="@id/rv_recommendations"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Popular Now"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_now"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_175sdp"
+                app:layout_constraintStart_toStartOf="@id/tv_popular_now"
+                app:layout_constraintTop_toBottomOf="@id/tv_popular_now"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+            <TextView
+                android:id="@+id/tv_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/rv_popular_now"
+                app:layout_constraintStart_toStartOf="@id/rv_popular_now"
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Browse by Category"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_categories"
+                app:layout_constraintStart_toStartOf="@id/tv_categories"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+            <TextView
+                android:id="@+id/tv_top_characters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/rv_categories"
+                app:layout_constraintStart_toStartOf="@id/rv_categories"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:text="Top Characters of All Time"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_top_characters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_top_characters"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
