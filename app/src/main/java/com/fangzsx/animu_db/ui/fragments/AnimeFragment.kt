@@ -35,8 +35,12 @@ class AnimeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         animeFragmentVM.getRecommendations()
-        animeFragmentVM.recommendations.observe(viewLifecycleOwner){
-            Log.i("test", it.data.size.toString())
+        animeFragmentVM.recommendations.observe(viewLifecycleOwner){ list ->
+            for(data in list.data){
+                for(entry in data.entry){
+                    Log.i("titles", entry.title)
+                }
+            }
         }
 
     }
