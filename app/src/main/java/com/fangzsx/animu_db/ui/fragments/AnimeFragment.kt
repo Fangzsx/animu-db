@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.fangzsx.animu_db.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.viewmodels.AnimeFragmentViewModel
 
@@ -35,13 +35,10 @@ class AnimeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        animeFragmentVM.recommendations.observe(viewLifecycleOwner){ list ->
-            for(data in list.data){
-                //data.entry retrieves the list of anime recommended. 100 total recommendation entries
+        animeFragmentVM.recommendations.observe(viewLifecycleOwner){
 
-
-            }
         }
+
 
     }
 

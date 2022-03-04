@@ -7,41 +7,41 @@
     tools:context=".ui.fragments.AnimeFragment"
     android:background="@color/black">
 
-    <LinearLayout
-        android:id="@+id/ll_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/black"
-        android:padding="@dimen/_8sdp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="Anime"
-            android:textSize="@dimen/_12sdp"
-            android:fontFamily="@font/sans"
-            android:textStyle="bold"
-            android:textColor="@color/blue"
-            android:layout_weight="3"/>
-        <ImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_search"
-            android:scaleType="fitCenter"/>
-    </LinearLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll_header"
-        app:layout_constraintStart_toStartOf="@id/ll_header"
-        app:layout_constraintEnd_toEndOf="@id/ll_header">
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/ll_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/black"
+                android:padding="@dimen/_8sdp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Anime"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/sans"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:layout_weight="3"/>
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_search"
+                    android:scaleType="fitCenter"/>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_recommendations"
@@ -51,8 +51,8 @@
                 android:fontFamily="@font/sans"
                 android:text="Recommendations"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_header"
+                app:layout_constraintStart_toStartOf="@id/ll_header"
                 android:layout_marginStart="@dimen/_8sdp"/>
 
             <androidx.recyclerview.widget.RecyclerView
