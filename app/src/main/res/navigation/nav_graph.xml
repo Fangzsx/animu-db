@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/animeFragment">
+
+    <fragment
+        android:id="@+id/animeFragment"
+        android:name="com.fangzsx.animu_db.ui.fragments.AnimeFragment"
+        android:label="fragment_anime"
+        tools:layout="@layout/fragment_anime" />
+    <fragment
+        android:id="@+id/mangaFragment"
+        android:name="com.fangzsx.animu_db.ui.fragments.MangaFragment"
+        android:label="fragment_manga"
+        tools:layout="@layout/fragment_manga" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.fangzsx.animu_db.ui.fragments.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>

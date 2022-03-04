@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/animeFragment"
+        android:title="Anime"
+        android:icon="@drawable/anime"/>
+    <item
+        android:id="@+id/mangaFragment"
+        android:title="Manga"
+        android:icon="@drawable/manga"/>
+    <item
+        android:id="@+id/favoritesFragment"
+        android:title="Favorites"
+        android:icon="@drawable/favorites"/>
+
+</menu>
