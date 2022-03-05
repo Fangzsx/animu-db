@@ -37,19 +37,27 @@ class AnimeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        animeFragmentVM.recommendations.observe(viewLifecycleOwner){ list ->
-            recommendationsAdapter.differ.submitList(list)
 
-        }
+
+        setupRecommendationsRecyclerView()
+
+
+    }
+
+    private fun setupRecommendationsRecyclerView() {
+        observeList()
 
         binding.rvRecommendations.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = recommendationsAdapter
         }
+    }
 
+    private fun observeList() {
+        animeFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
+            recommendationsAdapter.differ.submitList(list)
 
-
-
+        }
     }
 
 
