@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.RecommendationItemBinding
 import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.models.recommendation.Entry
+import kotlin.random.Random
 
 class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.AnimeViewHolder>() {
 
@@ -32,7 +33,18 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.Anime
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         val recommendation = differ.currentList[position]
 
-        Log.i("test", recommendation.)
+        val random = Random.nextInt(0,1)
+
+        val imageURL = recommendation.entry[random].images.jpg.image_url
+        val title = recommendation.entry[random].title
+
+        holder.binding.apply {
+            Glide
+                .with(holder.itemView)
+                .load(imageURL)
+                .into(ivRecommendedSrc)
+            tvRecommendedTitle.text = title
+        }
 
     }
 

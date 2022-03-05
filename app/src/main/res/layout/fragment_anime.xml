@@ -59,7 +59,7 @@
                 android:id="@+id/rv_recommendations"
                 android:layout_width="wrap_content"
                 android:clipToPadding="false"
-                android:layout_height="@dimen/_175sdp"
+                android:layout_height="@dimen/_200sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 app:layout_constraintTop_toBottomOf="@id/tv_recommendations"
                 app:layout_constraintStart_toStartOf="@id/tv_recommendations"/>
