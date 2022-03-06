@@ -50,9 +50,10 @@ class AnimeFragment : Fragment() {
             adapter = recommendationsAdapter
         }
 
-        recommendationsAdapter.onItemClick = {
-            Intent(activity, AnimeActivity::class.java).also {
-                startActivity(it)
+        recommendationsAdapter.onItemClick = { entry ->
+            Intent(activity, AnimeActivity::class.java).apply {
+                putExtra("MAL_ID", entry.mal_id)
+                startActivity(this)
             }
         }
     }

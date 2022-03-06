@@ -10,7 +10,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class AnimeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityAnimeBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimeBinding.inflate(layoutInflater)
