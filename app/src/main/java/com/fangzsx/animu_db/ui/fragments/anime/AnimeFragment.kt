@@ -1,7 +1,7 @@
-package com.fangzsx.animu_db.ui.fragments
+package com.fangzsx.animu_db.ui.fragments.anime
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
+import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.viewmodels.AnimeFragmentViewModel
 
 
@@ -36,9 +37,6 @@ class AnimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
         setupRecommendationsRecyclerView()
 
 
@@ -50,6 +48,12 @@ class AnimeFragment : Fragment() {
         binding.rvRecommendations.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = recommendationsAdapter
+        }
+
+        recommendationsAdapter.onItemClick = {
+            Intent(activity, AnimeActivity::class.java).also {
+                startActivity(it)
+            }
         }
     }
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/animeFragment"
-        android:name="com.fangzsx.animu_db.ui.fragments.AnimeFragment"
+        android:name="com.fangzsx.animu_db.ui.fragments.anime.AnimeFragment"
         android:label="fragment_anime"
         tools:layout="@layout/fragment_anime" />
     <fragment

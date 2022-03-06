@@ -1,6 +1,5 @@
 package com.fangzsx.animu_db.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -9,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.RecommendationItemBinding
 import com.fangzsx.animu_db.models.recommendation.Data
-import com.fangzsx.animu_db.models.recommendation.Entry
 import kotlin.random.Random
 
 class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.AnimeViewHolder>() {
+
+    var onItemClick : ((Data) -> Unit)? = null
 
     inner class AnimeViewHolder(val binding : RecommendationItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -44,6 +44,10 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.Anime
                 .load(imageURL)
                 .into(ivRecommendedSrc)
             tvRecommendedTitle.text = title
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(recommendation)
         }
 
     }
