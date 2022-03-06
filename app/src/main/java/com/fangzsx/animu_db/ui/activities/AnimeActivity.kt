@@ -16,13 +16,18 @@ class AnimeActivity : AppCompatActivity() {
         binding = ActivityAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUpTabLayout()
+
+    }
+
+    private fun setUpTabLayout() {
         val adapter = AnimeViewPagerAdapter(supportFragmentManager, lifecycle)
         binding.vpAnime.adapter = adapter
 
 
 
-        TabLayoutMediator(binding.tlInfoChars, binding.vpAnime){ tab, position ->
-            when(position){
+        TabLayoutMediator(binding.tlInfoChars, binding.vpAnime) { tab, position ->
+            when (position) {
                 0 -> {
                     tab.text = "INFO"
                 }
@@ -31,6 +36,5 @@ class AnimeActivity : AppCompatActivity() {
                 }
             }
         }.attach()
-
     }
 }
