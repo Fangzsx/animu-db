@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
-import com.fangzsx.animu_db.viewmodels.AnimeFragmentViewModel
+import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
 
 
 class AnimeFragment : Fragment() {

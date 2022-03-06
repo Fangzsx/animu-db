@@ -1,13 +1,10 @@
-package com.fangzsx.animu_db.viewmodels
+package com.fangzsx.animu_db.viewmodels.anime
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fangzsx.animu_db.models.recommendation.Data
-import com.fangzsx.animu_db.models.recommendation.Entry
 import com.fangzsx.animu_db.retrofit.RetrofitInstance
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AnimeFragmentViewModel : ViewModel() {
