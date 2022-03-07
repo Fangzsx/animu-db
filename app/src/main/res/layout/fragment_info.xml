@@ -13,8 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/vv_trailer"
                 android:layout_width="match_parent"
@@ -31,39 +29,79 @@
                 app:layout_constraintEnd_toEndOf="@id/vv_trailer"
                 android:text="Trailer"
                 android:textStyle="bold"
+                android:textColor="@color/blue"
                 android:fontFamily="@font/sans"
+                android:layout_marginTop="@dimen/_8sdp"
                 app:layout_constraintTop_toBottomOf="@id/vv_trailer"
                 android:textSize="@dimen/_12sdp"/>
 
             <TextView
-                android:id="@+id/tv_anime_title"
+                android:id="@+id/tv_original_title_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sans"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12sdp"
-                android:text="Title: "
+                android:text="Original Title: "
+                android:textColor="@color/blue"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_8sdp"
                 app:layout_constraintTop_toBottomOf="@id/tv_trailer"
                 app:layout_constraintStart_toStartOf="parent"/>
+
             <TextView
-                android:id="@+id/anime_title_english"
+                android:id="@+id/tv_original_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/tv_original_title_label"
+                app:layout_constraintStart_toEndOf="@id/tv_original_title_label"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/sans"
+                android:text="ORIGINAL TITLE"/>
+            <TextView
+                android:id="@+id/tv_english_title_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sans"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12sdp"
                 android:text="English Title:"
-                app:layout_constraintTop_toBottomOf="@id/tv_anime_title"
-                app:layout_constraintStart_toStartOf="@id/tv_anime_title"/>
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:textColor="@color/blue"
+                app:layout_constraintTop_toBottomOf="@id/tv_original_title_label"
+                app:layout_constraintStart_toStartOf="@id/tv_original_title_label"/>
+
             <TextView
+                android:id="@+id/tv_english_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                app:layout_constraintTop_toTopOf="@id/tv_english_title_label"
+                app:layout_constraintStart_toStartOf="@id/tv_original_title"
+                android:text="ENGLISH TITLE"/>
+
+            <TextView
+                android:id="@+id/tv_japanese_title_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sans"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12sdp"
                 android:text="Japanese Title:"
-                app:layout_constraintTop_toBottomOf="@id/anime_title_english"
-                app:layout_constraintStart_toStartOf="@id/anime_title_english"/>
+                android:textColor="@color/blue"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_english_title_label"
+                app:layout_constraintStart_toStartOf="@id/tv_english_title_label"/>
+
+            <TextView
+                android:id="@+id/tv_japanese_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                app:layout_constraintTop_toTopOf="@id/tv_japanese_title_label"
+                app:layout_constraintStart_toStartOf="@id/tv_english_title"
+                android:text="JAPANESE TITLE"/>
 
 
 

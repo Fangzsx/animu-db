@@ -44,16 +44,19 @@ class InfoFragment : Fragment(){
 
 
         animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
-            binding.tvAnimeTitle.text = animeData.title
+
+            binding.apply {
+                tvOriginalTitle.text = animeData.title
+                tvEnglishTitle.text = animeData.title_english
+                tvJapaneseTitle.text = animeData.title_japanese
+            }
 
             val youtubeID = animeData.trailer.youtube_id
-
-
-
             youtubeID?.let{
-
                 playTrailer(it)
             }
+
+
 
         }
 
