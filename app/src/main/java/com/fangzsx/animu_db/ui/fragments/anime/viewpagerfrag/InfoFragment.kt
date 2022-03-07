@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.fangzsx.animu_db.databinding.FragmentInfoBinding
 import com.fangzsx.animu_db.viewmodels.anime.AnimeInfoFragmentViewModel
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 
 class InfoFragment : Fragment(){
@@ -41,11 +42,28 @@ class InfoFragment : Fragment(){
         animeInfoVM.getAnimeById(id)
 
 
+
         animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
             binding.tvAnimeTitle.text = animeData.title
 
+            val youtubeID = animeData.trailer.youtube_id
+            youtubeID?.let{
+                playTrailer(it)
+            }
+
         }
 
+    }
+
+    private fun playTrailer(youtubeID: String) {
+        val youTubePlayerView: YouTubePlayerView = binding.vvTrailer
+        lifecycle.addObserver(youTubePlayerView)
+
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadVideo(youtubeID, 0f)
+            }
+        })
     }
 
 }

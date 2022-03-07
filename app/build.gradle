@@ -61,7 +61,7 @@ dependencies {
     //glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
 
-    //youtube api
-    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    //android youtube player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
 
 }

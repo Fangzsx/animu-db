@@ -34,8 +34,8 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.Anime
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         val data = differ.currentList[position]
 
-        val random = Random.nextInt(0,1)
-        val recommendation = data.entry[random]
+        //retrieve only the first data entry since the other data is duplicate only
+        val recommendation = data.entry[0]
 
         val imageURL = recommendation.images.jpg.image_url
         val title = recommendation.title

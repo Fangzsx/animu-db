@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <VideoView
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/vv_trailer"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
