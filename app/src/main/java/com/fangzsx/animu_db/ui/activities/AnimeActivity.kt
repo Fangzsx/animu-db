@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.adapters.vp.AnimeViewPagerAdapter
 import com.fangzsx.animu_db.databinding.ActivityAnimeBinding
 import com.fangzsx.animu_db.viewmodels.anime.AnimeActivityViewModel

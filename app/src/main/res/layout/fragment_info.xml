@@ -15,7 +15,7 @@
 
             <VideoView
                 android:id="@+id/vv_trailer"
-                android:layout_width="@dimen/_300sdp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
