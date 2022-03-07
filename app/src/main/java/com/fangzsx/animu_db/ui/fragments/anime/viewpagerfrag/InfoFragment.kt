@@ -47,7 +47,11 @@ class InfoFragment : Fragment(){
             binding.tvAnimeTitle.text = animeData.title
 
             val youtubeID = animeData.trailer.youtube_id
+
+
+
             youtubeID?.let{
+
                 playTrailer(it)
             }
 

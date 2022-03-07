@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.RecommendationItemBinding
 import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.models.recommendation.Entry
-import kotlin.random.Random
 
 class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.AnimeViewHolder>() {
 

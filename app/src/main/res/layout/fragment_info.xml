@@ -13,13 +13,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/vv_trailer"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tv_trailer"
