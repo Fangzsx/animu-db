@@ -1,6 +1,7 @@
 package com.fangzsx.animu_db.api
 
 import com.fangzsx.animu_db.models.anime.AnimeResponse
+import com.fangzsx.animu_db.models.animecharacter.AnimeCharactersResponse
 import com.fangzsx.animu_db.models.recommendation.Entry
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
 import retrofit2.Response
@@ -18,6 +19,12 @@ interface MALapi {
         @Path("id")
         id : Int
     ) : Response<AnimeResponse>
+
+    @GET("v4/anime/{id}/characters")
+    suspend fun getCharactersByAnimeID(
+        @Path("id")
+        id : Int
+    ) : Response<AnimeCharactersResponse>
 
 
 }

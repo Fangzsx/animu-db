@@ -20,7 +20,7 @@
             android:id="@+id/tv_anime_char_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_10sdp"
             android:text="Anime Name"
             android:background="@color/gray"
             android:gravity="center"/>
