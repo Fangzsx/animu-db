@@ -202,6 +202,7 @@
                 app:layout_constraintTop_toTopOf="@id/tv_rating_label"
                 app:layout_constraintStart_toStartOf="@id/tv_aired"
                 android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
                 android:text="R - 17+ (Violence and Profanity)"/>
 
             <TextView
@@ -243,8 +244,9 @@
             <TextView
                 android:id="@+id/tv_synopsis"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
                 app:layout_constraintTop_toBottomOf="@id/tv_synopsis_label"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="@dimen/_7sdp"

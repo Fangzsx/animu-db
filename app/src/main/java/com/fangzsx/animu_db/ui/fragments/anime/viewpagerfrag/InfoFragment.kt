@@ -41,32 +41,36 @@ class InfoFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         val id = requireActivity().intent.getIntExtra("MAL_ID", 0)
-
-
-        //loading
         onLoadingState()
 
         animeInfoVM.getAnimeById(id)
         animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
-
-            val fromToAiredData = extractDate(animeData)
-
             onSuccessState()
-            binding.apply {
-                tvOriginalTitle.text = animeData.title
-                tvEnglishTitle.text = animeData.title_english
-                tvJapaneseTitle.text = animeData.title_japanese
-                tvEpisodes.text = animeData.episodes.toString()
-                tvStatus.text = animeData.status
-                tvAired.text = fromToAiredData
-            }
-
-            val youtubeID = animeData.trailer.youtube_id
-            youtubeID?.let{
-                playTrailer(it)
-            }
+            setUpFragment(animeData)
         }
 
+    }
+
+    private fun setUpFragment(animeData: Data) {
+        //setup fields
+        val fromToAiredData = extractDate(animeData)
+        binding.apply {
+            tvOriginalTitle.text = animeData.title
+            tvEnglishTitle.text = animeData.title_english
+            tvJapaneseTitle.text = animeData.title_japanese
+            tvEpisodes.text = animeData.episodes.toString()
+            tvStatus.text = animeData.status
+            tvAired.text = fromToAiredData
+            tvRating.text = animeData.rating
+            tvScore.text = animeData.score.toString()
+            tvSynopsis.text = animeData.synopsis
+        }
+
+        //play trailer
+        val youtubeID = animeData.trailer.youtube_id
+        youtubeID?.let {
+            playTrailer(it)
+        }
     }
 
     private fun extractDate(data : Data) : String{
