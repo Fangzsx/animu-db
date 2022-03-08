@@ -16,6 +16,8 @@
             android:layout_height="match_parent"
             app:contentScrim="@color/black"
             app:title="Anime"
+            app:expandedTitleTextAppearance="@style/Toolbar.TitleText"
+            app:collapsedTitleTextAppearance="@style/Toolbar.TitleText"
             app:expandedTitleTextColor="@color/white"
             app:collapsedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">

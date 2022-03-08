@@ -17,4 +17,10 @@
     <style name="BottomNavigationViewTextStyle">
         <item name="android:fontFamily">@font/sans</item>
     </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">25sp</item>
+        <item name="fontFamily">@font/sans</item>
+    </style>
+
 </resources>

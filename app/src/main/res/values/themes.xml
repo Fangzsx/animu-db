@@ -17,4 +17,5 @@
     <style name="BottomNavigationViewTextStyle">
         <item name="android:fontFamily">@font/sans</item>
     </style>
+
 </resources>
