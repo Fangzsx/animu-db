@@ -37,7 +37,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/favorites"
+        android:src="@drawable/favorites_fill"
         app:layout_anchor="@id/clToolbar"
         app:layout_anchorGravity="bottom|end"
         android:layout_marginEnd="@dimen/_12sdp"/>

@@ -21,6 +21,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vv_trailer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                android:indeterminate="true"/>
+
             <TextView
                 android:id="@+id/tv_trailer"
                 android:layout_width="wrap_content"
@@ -102,6 +112,144 @@
                 app:layout_constraintTop_toTopOf="@id/tv_japanese_title_label"
                 app:layout_constraintStart_toStartOf="@id/tv_english_title"
                 android:text="JAPANESE TITLE"/>
+
+            <TextView
+                android:id="@+id/tv_episodes_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:text="Episodes:"
+                android:textColor="@color/blue"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_japanese_title_label"
+                app:layout_constraintStart_toStartOf="@id/tv_japanese_title_label"/>
+
+            <TextView
+                android:id="@+id/tv_episodes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="99 Episodes"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_episodes_label"
+                app:layout_constraintStart_toStartOf="@id/tv_japanese_title"/>
+
+            <TextView
+                android:id="@+id/tv_status_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: "
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/blue"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_episodes_label"
+                app:layout_constraintStart_toStartOf="@id/tv_episodes_label"/>
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:text="Finished Airing"
+                app:layout_constraintTop_toTopOf="@id/tv_status_label"
+                app:layout_constraintStart_toStartOf="@id/tv_episodes"/>
+
+            <TextView
+                android:id="@+id/tv_aired_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:text="Aired: "
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@id/tv_status_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_status_label"/>
+
+            <TextView
+                android:id="@+id/tv_aired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
+                app:layout_constraintTop_toTopOf="@id/tv_aired_label"
+                app:layout_constraintStart_toStartOf="@id/tv_status"
+                android:text="Jan 1 2001 - Dec 29 2099"/>
+
+            <TextView
+                android:id="@+id/tv_rating_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Rating:"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_aired_label"
+                app:layout_constraintStart_toStartOf="@id/tv_aired_label"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/tv_rating_label"
+                app:layout_constraintStart_toStartOf="@id/tv_aired"
+                android:textSize="@dimen/_12sdp"
+                android:text="R - 17+ (Violence and Profanity)"/>
+
+            <TextView
+                android:id="@+id/tv_score_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score: "
+                app:layout_constraintStart_toStartOf="@id/tv_rating_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_rating_label"
+                android:fontFamily="@font/sans"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_score_label"
+                app:layout_constraintStart_toStartOf="@id/tv_rating"
+                android:text="9.99"/>
+
+            <TextView
+                android:id="@+id/tv_synopsis_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_score_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_score_label"
+                android:text="Synopsis:"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/tv_synopsis"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_synopsis_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"/>
 
 
 

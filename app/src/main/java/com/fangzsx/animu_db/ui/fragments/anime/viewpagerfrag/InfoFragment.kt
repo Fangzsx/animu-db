@@ -39,12 +39,14 @@ class InfoFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         val id = requireActivity().intent.getIntExtra("MAL_ID", 0)
+
+
+        //loading
+        onLoadingState()
+
         animeInfoVM.getAnimeById(id)
-
-
-
         animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
-
+            onSuccessState()
             binding.apply {
                 tvOriginalTitle.text = animeData.title
                 tvEnglishTitle.text = animeData.title_english
@@ -55,11 +57,58 @@ class InfoFragment : Fragment(){
             youtubeID?.let{
                 playTrailer(it)
             }
-
-
-
         }
 
+    }
+
+    private fun onSuccessState() {
+
+        binding.apply {
+            progressBar.visibility = View.INVISIBLE
+            tvJapaneseTitle.visibility = View.VISIBLE
+            tvJapaneseTitleLabel.visibility = View.VISIBLE
+            tvEnglishTitle.visibility = View.VISIBLE
+            tvEnglishTitleLabel.visibility = View.VISIBLE
+            tvOriginalTitle.visibility = View.VISIBLE
+            tvOriginalTitleLabel.visibility = View.VISIBLE
+            tvEpisodesLabel.visibility = View.VISIBLE
+            tvEpisodes.visibility = View.VISIBLE
+            tvStatusLabel.visibility = View.VISIBLE
+            tvStatus.visibility = View.VISIBLE
+            tvAiredLabel.visibility = View.VISIBLE
+            tvAired.visibility = View.VISIBLE
+            tvRatingLabel.visibility = View.VISIBLE
+            tvRating.visibility = View.VISIBLE
+            tvScoreLabel.visibility = View.VISIBLE
+            tvScore.visibility = View.VISIBLE
+            tvSynopsisLabel.visibility = View.VISIBLE
+            tvSynopsis.visibility = View.VISIBLE
+        }
+
+    }
+
+    private fun onLoadingState() {
+        binding.apply {
+            progressBar.visibility = View.VISIBLE
+            tvJapaneseTitle.visibility = View.INVISIBLE
+            tvJapaneseTitleLabel.visibility = View.INVISIBLE
+            tvEnglishTitle.visibility = View.INVISIBLE
+            tvEnglishTitleLabel.visibility = View.INVISIBLE
+            tvOriginalTitle.visibility = View.INVISIBLE
+            tvOriginalTitleLabel.visibility = View.INVISIBLE
+            tvEpisodesLabel.visibility = View.INVISIBLE
+            tvEpisodes.visibility = View.INVISIBLE
+            tvStatusLabel.visibility = View.INVISIBLE
+            tvStatus.visibility = View.INVISIBLE
+            tvAiredLabel.visibility = View.INVISIBLE
+            tvAired.visibility = View.INVISIBLE
+            tvRatingLabel.visibility = View.INVISIBLE
+            tvRating.visibility = View.INVISIBLE
+            tvScoreLabel.visibility = View.INVISIBLE
+            tvScore.visibility = View.INVISIBLE
+            tvSynopsisLabel.visibility = View.INVISIBLE
+            tvSynopsis.visibility = View.INVISIBLE
+        }
     }
 
     private fun playTrailer(youtubeID: String) {
