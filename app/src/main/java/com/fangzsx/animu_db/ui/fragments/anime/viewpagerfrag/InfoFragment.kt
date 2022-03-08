@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.fangzsx.animu_db.databinding.FragmentInfoBinding
+import com.fangzsx.animu_db.models.anime.Data
 import com.fangzsx.animu_db.viewmodels.anime.AnimeInfoFragmentViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -48,13 +49,7 @@ class InfoFragment : Fragment(){
         animeInfoVM.getAnimeById(id)
         animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
 
-            val fromMonth = animeData.aired.prop.from.month
-            val fromDay = animeData.aired.prop.from.day
-            val fromYear = animeData.aired.prop.from.year
-
-            val toMonth = animeData.aired.prop.to.month
-            val toDay = animeData.aired.prop.to.day
-            val toYear = animeData.aired.prop.to.year
+            val fromToAiredData = extractDate(animeData)
 
             onSuccessState()
             binding.apply {
@@ -63,8 +58,7 @@ class InfoFragment : Fragment(){
                 tvJapaneseTitle.text = animeData.title_japanese
                 tvEpisodes.text = animeData.episodes.toString()
                 tvStatus.text = animeData.status
-                tvAired.text = "From $fromYear-$fromMonth-$fromDay To $toYear-$toMonth-$toDay"
-
+                tvAired.text = fromToAiredData
             }
 
             val youtubeID = animeData.trailer.youtube_id
@@ -73,6 +67,18 @@ class InfoFragment : Fragment(){
             }
         }
 
+    }
+
+    private fun extractDate(data : Data) : String{
+        val fromMonth = data.aired.prop.from.month
+        val fromDay = data.aired.prop.from.day
+        val fromYear = data.aired.prop.from.year
+
+        val toMonth = data.aired.prop.to.month
+        val toDay = data.aired.prop.to.day
+        val toYear = data.aired.prop.to.year
+
+        return "From $fromYear-$fromMonth-$fromDay To $toYear-$toMonth-$toDay"
     }
 
     private fun onSuccessState() {

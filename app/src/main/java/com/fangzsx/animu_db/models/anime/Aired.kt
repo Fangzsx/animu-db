@@ -5,4 +5,4 @@ data class Aired(
     val prop: Prop,
     val string: String,
     val to: Any
-) 
+)
