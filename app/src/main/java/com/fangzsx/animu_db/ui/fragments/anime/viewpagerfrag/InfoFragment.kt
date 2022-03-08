@@ -11,6 +11,7 @@ import com.fangzsx.animu_db.viewmodels.anime.AnimeInfoFragmentViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.util.*
 
 
 class InfoFragment : Fragment(){
@@ -46,11 +47,24 @@ class InfoFragment : Fragment(){
 
         animeInfoVM.getAnimeById(id)
         animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
+
+            val fromMonth = animeData.aired.prop.from.month
+            val fromDay = animeData.aired.prop.from.day
+            val fromYear = animeData.aired.prop.from.year
+
+            val toMonth = animeData.aired.prop.to.month
+            val toDay = animeData.aired.prop.to.day
+            val toYear = animeData.aired.prop.to.year
+
             onSuccessState()
             binding.apply {
                 tvOriginalTitle.text = animeData.title
                 tvEnglishTitle.text = animeData.title_english
                 tvJapaneseTitle.text = animeData.title_japanese
+                tvEpisodes.text = animeData.episodes.toString()
+                tvStatus.text = animeData.status
+                tvAired.text = "From $fromYear-$fromMonth-$fromDay To $toYear-$toMonth-$toDay"
+
             }
 
             val youtubeID = animeData.trailer.youtube_id
