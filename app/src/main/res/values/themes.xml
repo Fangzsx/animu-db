@@ -18,4 +18,15 @@
         <item name="android:fontFamily">@font/sans</item>
     </style>
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">25sp</item>
+        <item name="fontFamily">@font/sans</item>
+    </style>
+
+    <style name="CustomTabStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/sans</item>
+    </style>
+
 </resources>
