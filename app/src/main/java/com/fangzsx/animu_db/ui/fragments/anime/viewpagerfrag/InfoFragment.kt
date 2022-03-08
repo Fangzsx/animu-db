@@ -62,7 +62,7 @@ class InfoFragment : Fragment(){
             tvStatus.text = animeData.status
             tvAired.text = fromToAiredData
             tvRating.text = animeData.rating
-            tvScore.text = animeData.score.toString()
+            tvScore.text = "${animeData.score}/10.0"
             tvSynopsis.text = animeData.synopsis
         }
 
