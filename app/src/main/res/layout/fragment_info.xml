@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.anime.viewpagerfrag.InfoFragment">
 
@@ -248,7 +248,6 @@
                 android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/sans"
                 app:layout_constraintTop_toBottomOf="@id/tv_synopsis_label"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="@dimen/_7sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_8sdp"/>

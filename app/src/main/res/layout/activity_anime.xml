@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/favorites_fill"
         app:layout_anchor="@id/clToolbar"
+        android:backgroundTint="@color/blue"
         app:layout_anchorGravity="bottom|end"
         android:layout_marginEnd="@dimen/_12sdp"/>
 
@@ -46,7 +47,7 @@
     
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,19 +59,16 @@
                 android:paddingTop="@dimen/_13sdp"
                 app:tabTextAppearance="@style/CustomTabStyle"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintStart_toStartOf="parent">
 
             </com.google.android.material.tabs.TabLayout>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_anime"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tl_info_chars"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
