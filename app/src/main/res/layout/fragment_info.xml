@@ -67,7 +67,7 @@
                 app:layout_constraintStart_toEndOf="@id/tv_original_title_label"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/sans"
-                android:text="ORIGINAL TITLE"/>
+                android:text="Original Title"/>
             <TextView
                 android:id="@+id/tv_english_title_label"
                 android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                 android:fontFamily="@font/sans"
                 app:layout_constraintTop_toTopOf="@id/tv_english_title_label"
                 app:layout_constraintStart_toStartOf="@id/tv_original_title"
-                android:text="ENGLISH TITLE"/>
+                android:text="English Title"/>
 
             <TextView
                 android:id="@+id/tv_japanese_title_label"
@@ -111,7 +111,7 @@
                 android:fontFamily="@font/sans"
                 app:layout_constraintTop_toTopOf="@id/tv_japanese_title_label"
                 app:layout_constraintStart_toStartOf="@id/tv_english_title"
-                android:text="JAPANESE TITLE"/>
+                android:text="Japanese Title"/>
 
             <TextView
                 android:id="@+id/tv_episodes_label"
