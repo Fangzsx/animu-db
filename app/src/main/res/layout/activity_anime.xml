@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            android:layout_gravity="bottom"
+            android:paddingTop="@dimen/_13sdp"
             app:tabTextAppearance="@style/CustomTabStyle"/>
 
         <androidx.viewpager2.widget.ViewPager2
