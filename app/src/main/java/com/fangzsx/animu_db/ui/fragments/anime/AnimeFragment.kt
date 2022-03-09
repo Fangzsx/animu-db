@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fangzsx.animu_db.adapters.PopularAnimeAdapter
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
@@ -18,12 +19,14 @@ class AnimeFragment : Fragment() {
     private lateinit var animeFragmentVM : AnimeFragmentViewModel
     private lateinit var binding : FragmentAnimeBinding
     private lateinit var recommendationsAdapter : RecommendationsAdapter
+    private lateinit var popularAdapter : PopularAnimeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         animeFragmentVM = ViewModelProvider(this).get(AnimeFragmentViewModel::class.java)
         recommendationsAdapter = RecommendationsAdapter()
+        popularAdapter = PopularAnimeAdapter()
     }
 
     override fun onCreateView(
@@ -36,14 +39,14 @@ class AnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeList()
 
         setupRecommendationsRecyclerView()
-
+        setUpPopularRecyclerView()
 
     }
 
     private fun setupRecommendationsRecyclerView() {
-        observeList()
 
         binding.rvRecommendations.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -58,10 +61,29 @@ class AnimeFragment : Fragment() {
         }
     }
 
+    private fun setUpPopularRecyclerView(){
+        binding.rvPopularNow.apply {
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = popularAdapter
+        }
+
+        popularAdapter.onItemClick = { data ->
+            Intent(activity, AnimeActivity::class.java).apply {
+                putExtra("MAL_ID", data.mal_id)
+                startActivity(this)
+            }
+        }
+
+    }
+
     private fun observeList() {
-        animeFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
+        animeFragmentVM.animeRecommendations.observe(viewLifecycleOwner) { list ->
             recommendationsAdapter.differ.submitList(list)
 
+        }
+
+        animeFragmentVM.animePopular.observe(viewLifecycleOwner){ list ->
+            popularAdapter.differ.submitList(list)
         }
     }
 

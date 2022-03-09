@@ -9,18 +9,30 @@ import kotlinx.coroutines.launch
 
 class AnimeFragmentViewModel : ViewModel() {
 
-    var recommendations : MutableLiveData<List<Data>> = MutableLiveData()
+    var animeRecommendations : MutableLiveData<List<Data>> = MutableLiveData()
+    val animePopular : MutableLiveData<List<com.fangzsx.animu_db.models.popular.Data>> = MutableLiveData()
+
 
     init {
-        getRecommendations()
+        getAnimeRecommendations()
+        getPopularAnime()
     }
 
-    private fun getRecommendations() = viewModelScope.launch{
+    private fun getAnimeRecommendations() = viewModelScope.launch{
         val response = RetrofitInstance.malAPI.getAnimeRecommendation()
         if(response.isSuccessful){
             response.body()?.let{ list->
-                recommendations.postValue(list.data)
+                animeRecommendations.postValue(list.data)
 
+            }
+        }
+    }
+
+    private fun getPopularAnime() = viewModelScope.launch {
+        val response = RetrofitInstance.malAPI.getPopularAnime()
+        if(response.isSuccessful){
+            response.body()?.let { list ->
+                animePopular.postValue(list.data)
             }
         }
     }
