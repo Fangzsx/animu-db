@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.adapters.PopularAnimeAdapter
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
+import com.fangzsx.animu_db.adapters.TopCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
@@ -20,6 +22,7 @@ class AnimeFragment : Fragment() {
     private lateinit var binding : FragmentAnimeBinding
     private lateinit var recommendationsAdapter : RecommendationsAdapter
     private lateinit var popularAdapter : PopularAnimeAdapter
+    private lateinit var topCharacterAdapter : TopCharactersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,7 @@ class AnimeFragment : Fragment() {
         animeFragmentVM = ViewModelProvider(this).get(AnimeFragmentViewModel::class.java)
         recommendationsAdapter = RecommendationsAdapter()
         popularAdapter = PopularAnimeAdapter()
+        topCharacterAdapter = TopCharactersAdapter()
     }
 
     override fun onCreateView(
@@ -43,6 +47,7 @@ class AnimeFragment : Fragment() {
 
         setupRecommendationsRecyclerView()
         setUpPopularRecyclerView()
+        setUpTopCharactersRecyclerView()
 
     }
 
@@ -76,6 +81,13 @@ class AnimeFragment : Fragment() {
 
     }
 
+    private fun setUpTopCharactersRecyclerView(){
+        binding.rvTopCharacters.apply{
+            layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
+            adapter = topCharacterAdapter
+        }
+    }
+
     private fun observeList() {
         animeFragmentVM.animeRecommendations.observe(viewLifecycleOwner) { list ->
             recommendationsAdapter.differ.submitList(list)
@@ -84,6 +96,10 @@ class AnimeFragment : Fragment() {
 
         animeFragmentVM.animePopular.observe(viewLifecycleOwner){ list ->
             popularAdapter.differ.submitList(list)
+        }
+
+        animeFragmentVM.topCharacters.observe(viewLifecycleOwner){ list ->
+            topCharacterAdapter.differ.submitList(list)
         }
     }
 
