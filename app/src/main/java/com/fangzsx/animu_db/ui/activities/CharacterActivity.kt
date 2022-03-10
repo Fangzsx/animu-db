@@ -28,6 +28,11 @@ class CharacterActivity : AppCompatActivity() {
                     .with(this@CharacterActivity)
                     .load(charData.images.jpg.image_url)
                     .into(ivCharImage)
+
+                tvFullname.text = charData.name
+                tvFullnameKanji.text = charData.name_kanji
+                tvNicknames.text = charData.nicknames.toString()
+                tvAbout.text = charData.about.trim()
             }
 
         }

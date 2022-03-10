@@ -50,7 +50,113 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp">
+
+            <TextView
+                android:id="@+id/tv_char_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Character Data"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
+                android:textColor="@color/blue"/>
+
+            <TextView
+                android:id="@+id/tv_fullname_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name:"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_char_data"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full name"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                app:layout_constraintStart_toEndOf="@id/tv_fullname_label"
+                app:layout_constraintTop_toTopOf="@id/tv_fullname_label"/>
+
+            <TextView
+                android:id="@+id/tv_fullname_kanji_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_fullname_label"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname_label"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Kanji Name:"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_fullname_kanji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/tv_fullname_kanji_label"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname"
+                android:text="Kanji Name"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"/>
+
+            <TextView
+                android:id="@+id/tv_nickname_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_fullname_kanji_label"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname_kanji_label"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Nicknames:"/>
+
+            <TextView
+                android:id="@+id/tv_nicknames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/tv_nickname_label"
+                app:layout_constraintStart_toStartOf="@id/tv_fullname_kanji"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/sans"
+                android:text="Nicknames, nameNicks"/>
+
+            <TextView
+                android:id="@+id/tv_about_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_nickname_label"
+                app:layout_constraintStart_toStartOf="@id/tv_nickname_label"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="About:"/>
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_about_label"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
