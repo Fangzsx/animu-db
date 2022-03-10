@@ -11,11 +11,13 @@ class AnimeFragmentViewModel : ViewModel() {
 
     var animeRecommendations : MutableLiveData<List<Data>> = MutableLiveData()
     val animePopular : MutableLiveData<List<com.fangzsx.animu_db.models.popular.Data>> = MutableLiveData()
+    val topCharacters : MutableLiveData<List<com.fangzsx.animu_db.models.topcharacters.Data>> = MutableLiveData()
 
 
     init {
         getAnimeRecommendations()
         getPopularAnime()
+        getTopCharacters()
     }
 
     private fun getAnimeRecommendations() = viewModelScope.launch{
@@ -33,6 +35,15 @@ class AnimeFragmentViewModel : ViewModel() {
         if(response.isSuccessful){
             response.body()?.let { list ->
                 animePopular.postValue(list.data)
+            }
+        }
+    }
+
+    private fun getTopCharacters() = viewModelScope.launch {
+        val response = RetrofitInstance.malAPI.getTopCharacters()
+        if(response.isSuccessful){
+            response.body()?.let { list ->
+                topCharacters.postValue(list.data)
             }
         }
     }

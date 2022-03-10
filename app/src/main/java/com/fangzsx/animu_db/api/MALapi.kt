@@ -5,6 +5,7 @@ import com.fangzsx.animu_db.models.animecharacter.AnimeCharactersResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
 import com.fangzsx.animu_db.models.recommendation.Entry
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
+import com.fangzsx.animu_db.models.topcharacters.TopCharactersResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,6 +30,9 @@ interface MALapi {
 
     @GET("v4/top/anime")
     suspend fun getPopularAnime() : Response<PopularAnimeResponse>
+
+    @GET("v4/top/characters")
+    suspend fun getTopCharacters() : Response<TopCharactersResponse>
 
 
 }
