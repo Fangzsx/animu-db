@@ -24,7 +24,6 @@
             android:layout_height="@dimen/_30sdp"
             android:textSize="@dimen/_10sdp"
             android:text="Anime Name"
-            android:textColor="@color/blue"
             android:fontFamily="@font/sans"
             android:background="@color/black"
             android:gravity="center"/>
