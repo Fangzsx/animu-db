@@ -1,9 +1,9 @@
 package com.fangzsx.animu_db.api
 
 import com.fangzsx.animu_db.models.anime.AnimeResponse
-import com.fangzsx.animu_db.models.animecharacter.AnimeCharactersResponse
+import com.fangzsx.animu_db.models.animecharacters.AnimeCharactersResponse
+import com.fangzsx.animu_db.models.character.CharacterResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
-import com.fangzsx.animu_db.models.recommendation.Entry
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
 import com.fangzsx.animu_db.models.topcharacters.TopCharactersResponse
 import retrofit2.Response
@@ -33,6 +33,12 @@ interface MALapi {
 
     @GET("v4/top/characters")
     suspend fun getTopCharacters() : Response<TopCharactersResponse>
+
+    @GET("v4/characters/{id}")
+    suspend fun getCharacterByID(
+        @Path("id")
+        id : Int
+    ) : Response<CharacterResponse>
 
 
 }

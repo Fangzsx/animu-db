@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.models.animecharacter
+package com.fangzsx.animu_db.models.character
 
 data class Images(
     val jpg: Jpg,

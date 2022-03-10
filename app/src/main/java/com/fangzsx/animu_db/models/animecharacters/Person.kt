@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.models.animecharacter
+package com.fangzsx.animu_db.models.animecharacters
 
 data class Person(
     val images: ImagesX,

@@ -3,7 +3,7 @@ package com.fangzsx.animu_db.viewmodels.anime
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fangzsx.animu_db.models.animecharacter.Data
+import com.fangzsx.animu_db.models.animecharacters.Data
 import com.fangzsx.animu_db.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
 

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.AnimeCharacterItemBinding
-import com.fangzsx.animu_db.models.animecharacter.Data
+import com.fangzsx.animu_db.models.animecharacters.Data
 
 class AnimeCharactersAdapter : RecyclerView.Adapter<AnimeCharactersAdapter.CharacterViewHolder>() {
 

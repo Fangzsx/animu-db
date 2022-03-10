@@ -13,6 +13,8 @@ class TopCharactersAdapter : RecyclerView.Adapter<TopCharactersAdapter.Character
 
     inner class CharacterViewHolder(val binding : TopCharacterItemBinding) : RecyclerView.ViewHolder(binding.root)
 
+    var onItemClick : ((Data) -> Unit)? = null
+
     private val differCallback = object : DiffUtil.ItemCallback<Data>(){
         override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
             return oldItem.mal_id == newItem.mal_id
@@ -43,6 +45,10 @@ class TopCharactersAdapter : RecyclerView.Adapter<TopCharactersAdapter.Character
                 .load(character.images.jpg.image_url)
                 .into(ivTopAnimeChar)
             tvTopAnimeCharName.text = character.name
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(character)
         }
     }
 

@@ -14,6 +14,7 @@ import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.adapters.TopCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
+import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
 
 
@@ -85,6 +86,12 @@ class AnimeFragment : Fragment() {
         binding.rvTopCharacters.apply{
             layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
             adapter = topCharacterAdapter
+        }
+        topCharacterAdapter.onItemClick = { charData ->
+            Intent(activity, CharacterActivity::class.java).apply {
+                putExtra("CHAR_ID", charData.mal_id)
+                startActivity(this)
+            }
         }
     }
 
