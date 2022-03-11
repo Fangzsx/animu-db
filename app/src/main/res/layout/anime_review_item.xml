@@ -68,6 +68,18 @@
             app:layout_constraintBottom_toTopOf="@id/tv_animation_label"
             app:layout_constraintTop_toBottomOf="@id/tv_score_label"
             app:layout_constraintStart_toStartOf="@id/tv_review_by_label"/>
+
+        <TextView
+            android:id="@+id/tv_overall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="@dimen/_10sdp"
+            android:text="9.0/10.10"
+            app:layout_constraintStart_toEndOf="@id/tv_overall_label"
+            app:layout_constraintTop_toTopOf="@id/tv_overall_label"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
         <TextView
             android:id="@+id/tv_animation_label"
             android:layout_width="wrap_content"
@@ -80,6 +92,17 @@
             app:layout_constraintBottom_toTopOf="@id/tv_enjoyment_label"
             app:layout_constraintTop_toBottomOf="@id/tv_review_by_label"
             app:layout_constraintStart_toStartOf="@id/tv_review_by_label"/>
+
+        <TextView
+            android:id="@+id/tv_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="@dimen/_10sdp"
+            android:text="9.0/10.0"
+            app:layout_constraintStart_toEndOf="@id/tv_animation_label"
+            app:layout_constraintTop_toTopOf="@id/tv_animation_label"
+            android:layout_marginStart="@dimen/_10sdp"/>
         <TextView
             android:id="@+id/tv_sound_label"
             android:layout_width="wrap_content"
@@ -93,6 +116,18 @@
             app:layout_constraintTop_toBottomOf="@id/tv_animation_label"
             app:layout_constraintStart_toStartOf="@id/tv_review_by_label"/>
         <TextView
+            android:id="@+id/tv_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="@dimen/_10sdp"
+            android:text="9.0/10.0"
+            app:layout_constraintStart_toEndOf="@id/tv_sound_label"
+            app:layout_constraintTop_toTopOf="@id/tv_sound_label"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+
+        <TextView
             android:id="@+id/tv_character_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,6 +140,16 @@
             app:layout_constraintTop_toBottomOf="@id/tv_sound_label"
             app:layout_constraintStart_toStartOf="@id/tv_review_by_label"/>
 
+        <TextView
+            android:id="@+id/tv_character"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="@dimen/_10sdp"
+            android:text="9.0/10.0"
+            app:layout_constraintStart_toEndOf="@id/tv_character_label"
+            app:layout_constraintTop_toTopOf="@id/tv_character_label"
+            android:layout_marginStart="@dimen/_10sdp"/>
 
         <TextView
             android:id="@+id/tv_enjoyment_label"
@@ -117,6 +162,46 @@
             android:text="Enjoyment:"
             app:layout_constraintBottom_toBottomOf="@id/iv_review_anime"
             app:layout_constraintStart_toStartOf="@id/tv_review_by_label"/>
+
+        <TextView
+            android:id="@+id/tv_enjoyment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sans"
+            android:textSize="@dimen/_10sdp"
+            android:text="9.0/10.0"
+            app:layout_constraintStart_toEndOf="@id/tv_enjoyment_label"
+            app:layout_constraintTop_toTopOf="@id/tv_enjoyment_label"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+        <TextView
+            android:id="@+id/tv_comment_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iv_review_anime"
+            android:fontFamily="@font/sans"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:text="Review"
+            app:layout_constraintStart_toStartOf="@id/iv_review_anime"
+            android:layout_marginTop="@dimen/_5sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:textSize="@dimen/_10sdp"
+            android:maxLines="4"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/tv_comment_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="left"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
