@@ -47,6 +47,7 @@
             android:textColor="@color/white"
             android:background="@color/gray"
             android:text="1"
+            android:fontFamily="@font/sans"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"/>
 
