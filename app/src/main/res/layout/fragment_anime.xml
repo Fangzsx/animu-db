@@ -86,7 +86,7 @@
                 android:layout_marginTop="@dimen/_8sdp"/>
 
             <TextView
-                android:id="@+id/tv_categories"
+                android:id="@+id/tv_recent_reviews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/rv_popular_now"
@@ -96,13 +96,13 @@
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/blue"
-                android:text="Browse by Category"/>
+                android:text="Recent Reviews"/>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_categories"
+                android:id="@+id/rv_reviews"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_50sdp"
-                app:layout_constraintTop_toBottomOf="@id/tv_categories"
-                app:layout_constraintStart_toStartOf="@id/tv_categories"
+                android:layout_height="@dimen/_200sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_recent_reviews"
+                app:layout_constraintStart_toStartOf="@id/tv_recent_reviews"
                 android:layout_marginTop="@dimen/_8sdp"/>
 
             <TextView
@@ -110,8 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_30sdp"
-                app:layout_constraintTop_toBottomOf="@id/rv_categories"
-                app:layout_constraintStart_toStartOf="@id/rv_categories"
+                app:layout_constraintTop_toBottomOf="@id/rv_reviews"
+                app:layout_constraintStart_toStartOf="@id/rv_reviews"
                 android:fontFamily="@font/sans"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
