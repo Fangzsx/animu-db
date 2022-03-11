@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.AnimeReviewItemBinding
 import com.fangzsx.animu_db.models.animereview.Data
+import java.lang.StringBuilder
 
 class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHolder>() {
 
@@ -47,6 +48,8 @@ class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHol
             tvEnjoyment.text = review.scores.enjoyment.toString()
             tvReviewBy.text = review.user.username
             tvSound.text = review.scores.sound.toString()
+            tvReview.text = "\"${review.review}\" "
+
 
             Glide
                 .with(holder.itemView)

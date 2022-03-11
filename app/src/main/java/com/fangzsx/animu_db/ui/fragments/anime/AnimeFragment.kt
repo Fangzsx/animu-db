@@ -52,16 +52,24 @@ class AnimeFragment : Fragment() {
         setupRecommendationsRecyclerView()
         setUpPopularRecyclerView()
         setUpAnimeReviewRecyclerView()
+        loadTopCharactersAfter4Seconds()
 
+
+    }
+
+    private fun loadTopCharactersAfter4Seconds() {
         Handler().postDelayed({
             animeFragmentVM.getTopCharacters()
-            animeFragmentVM.topCharacters.observe(viewLifecycleOwner){ list ->
+            animeFragmentVM.topCharacters.observe(viewLifecycleOwner) { list ->
                 topCharacterAdapter.differ.submitList(list)
             }
+            hideProgressBar()
             setUpTopCharactersRecyclerView()
-        },2000)
+        }, 4000)
+    }
 
-
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.INVISIBLE
     }
 
     private fun setupRecommendationsRecyclerView() {

@@ -1,6 +1,7 @@
 package com.fangzsx.animu_db.ui.fragments.anime.viewpagerfrag
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,7 @@ class InfoFragment : Fragment(){
         }
 
         //play trailer
+
         val youtubeID = animeData.trailer.youtube_id
         youtubeID?.let {
             playTrailer(it)

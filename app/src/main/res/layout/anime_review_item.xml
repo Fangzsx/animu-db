@@ -28,7 +28,7 @@
             android:textSize="@dimen/_10sdp"
             android:textStyle="bold"
             android:textColor="@color/blue"
-            android:text="By: "
+            android:text="By Username: "
             app:layout_constraintStart_toEndOf="@id/iv_review_anime"
             app:layout_constraintTop_toTopOf="@id/iv_review_anime"
             android:layout_marginStart="@dimen/_10sdp"/>
@@ -187,7 +187,7 @@
             android:layout_marginStart="@dimen/_10sdp"/>
 
         <TextView
-            android:id="@+id/tv_comment_label"
+            android:id="@+id/tv_review_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/iv_review_anime"
@@ -200,6 +200,7 @@
             android:layout_marginTop="@dimen/_5sdp"/>
 
         <TextView
+            android:id="@+id/tv_review"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_8sdp"
@@ -209,7 +210,7 @@
             android:textStyle="italic"
             android:maxLines="3"
             android:ellipsize="end"
-            app:layout_constraintTop_toBottomOf="@id/tv_comment_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_review_label"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             app:layout_constraintStart_toStartOf="parent"

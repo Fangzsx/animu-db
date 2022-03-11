@@ -116,7 +116,17 @@
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
-                android:text="Top Characters of All Time"/>
+                android:text="Top 10 Characters of All Time"/>
+
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_top_characters"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_top_characters"
