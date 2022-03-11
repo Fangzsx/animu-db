@@ -2,10 +2,12 @@ package com.fangzsx.animu_db.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.databinding.PopularAnimeItemBinding
 import com.fangzsx.animu_db.models.popular.Data
 
@@ -40,6 +42,32 @@ class PopularAnimeAdapter : RecyclerView.Adapter<PopularAnimeAdapter.AnimeViewHo
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         val popularAnime = differ.currentList[position]
 
+        when(position) {
+            0 -> holder.binding.tvPopularRank.setBackgroundColor(
+                ContextCompat.getColor(
+                    holder.itemView.context,
+                    R.color.gold
+                )
+            )
+            1 -> holder.binding.tvPopularRank.setBackgroundColor(
+                ContextCompat.getColor(
+                    holder.itemView.context,
+                    R.color.silver
+                )
+            )
+            2 -> holder.binding.tvPopularRank.setBackgroundColor(
+                ContextCompat.getColor(
+                    holder.itemView.context,
+                    R.color.bronze
+                )
+            )
+            else -> holder.binding.tvPopularRank.setBackgroundColor(
+                ContextCompat.getColor(
+                    holder.itemView.context,
+                    R.color.gray
+                )
+            )
+        }
         holder.binding.apply {
             Glide
                 .with(holder.itemView)
@@ -47,6 +75,7 @@ class PopularAnimeAdapter : RecyclerView.Adapter<PopularAnimeAdapter.AnimeViewHo
                 .into(ivPopularSrc)
 
             tvPopularTitle.text = popularAnime.title
+            tvPopularRank.text = "${position + 1}"
         }
 
         holder.itemView.setOnClickListener {

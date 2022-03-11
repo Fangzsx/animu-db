@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/black"
-            app:title="Character Name"
             app:expandedTitleTextAppearance="@style/Toolbar.TitleText"
             app:expandedTitleTextColor="@color/white"
             app:collapsedTitleTextAppearance="@style/Toolbar.TitleText"
@@ -42,6 +41,7 @@
         app:layout_anchor="@id/cl_toolbar"
         app:indicatorColor="@color/blue"
         android:indeterminate="true"
+        android:visibility="gone"
         app:layout_anchorGravity="bottom"/>
 
     <androidx.core.widget.NestedScrollView

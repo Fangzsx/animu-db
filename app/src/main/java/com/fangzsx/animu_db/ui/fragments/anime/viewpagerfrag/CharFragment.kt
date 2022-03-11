@@ -52,6 +52,7 @@ class CharFragment : Fragment() {
         }
 
         charactersAdapter.onItemClick = { character ->
+
             Intent(activity, CharacterActivity::class.java).apply{
                 putExtra("CHAR_ID", character.mal_id)
                 startActivity(this)

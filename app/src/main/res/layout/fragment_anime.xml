@@ -66,7 +66,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_recommendations"
                 app:layout_constraintStart_toStartOf="@id/tv_recommendations"/>
             <TextView
-                android:id="@+id/tv_popular_now"
+                android:id="@+id/tv_popular_anime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -76,13 +76,13 @@
                 app:layout_constraintStart_toStartOf="@id/rv_recommendations"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/blue"
-                android:text="Popular Now"/>
+                android:text="Most Popular Anime"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_popular_now"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_200sdp"
-                app:layout_constraintStart_toStartOf="@id/tv_popular_now"
-                app:layout_constraintTop_toBottomOf="@id/tv_popular_now"
+                app:layout_constraintStart_toStartOf="@id/tv_popular_anime"
+                app:layout_constraintTop_toBottomOf="@id/tv_popular_anime"
                 android:layout_marginTop="@dimen/_8sdp"/>
 
             <TextView

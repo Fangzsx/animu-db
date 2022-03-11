@@ -30,6 +30,18 @@
             android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <TextView
+            android:id="@+id/tv_popular_rank"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            android:background="@color/gray"
+            android:text="1"
+            android:fontFamily="@font/sans"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
