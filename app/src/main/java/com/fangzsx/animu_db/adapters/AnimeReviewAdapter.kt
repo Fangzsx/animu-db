@@ -41,13 +41,13 @@ class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHol
         val review = differ.currentList[position]
 
         holder.binding.apply {
-            tvOverall.text = review.scores.overall.toString()
-            tvStory.text = review.scores.story.toString()
-            tvAnimation.text = review.scores.animation.toString()
-            tvCharacter.text = review.scores.character.toString()
-            tvEnjoyment.text = review.scores.enjoyment.toString()
+            tvOverall.text = "${review.scores.overall.toDouble()}/10.0"
+            tvStory.text = "${review.scores.story.toDouble()}/10.0"
+            tvAnimation.text = "${review.scores.animation.toDouble()}/10.0"
+            tvCharacter.text = "${review.scores.character.toDouble()}/10.0"
+            tvEnjoyment.text = "${review.scores.enjoyment.toDouble()}/10.0"
             tvReviewBy.text = review.user.username
-            tvSound.text = review.scores.sound.toString()
+            tvSound.text = "${review.scores.sound.toDouble()}/10.0"
             tvReview.text = "\"${review.review}\" "
 
 

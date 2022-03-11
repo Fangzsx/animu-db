@@ -48,6 +48,7 @@ class AnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         observeList()
         setupRecommendationsRecyclerView()
         setUpPopularRecyclerView()
@@ -60,7 +61,7 @@ class AnimeFragment : Fragment() {
     private fun loadTopCharactersAfter4Seconds() {
         Handler().postDelayed({
             animeFragmentVM.getTopCharacters()
-            animeFragmentVM.topCharacters.observe(viewLifecycleOwner) { list ->
+            animeFragmentVM.topCharacters.observe(requireParentFragment().viewLifecycleOwner) { list ->
                 topCharacterAdapter.differ.submitList(list)
             }
             hideProgressBar()
@@ -124,15 +125,15 @@ class AnimeFragment : Fragment() {
     }
 
     private fun observeList() {
-        animeFragmentVM.animeRecommendations.observe(viewLifecycleOwner) { list ->
+        animeFragmentVM.animeRecommendations.observe(requireParentFragment().viewLifecycleOwner) { list ->
             recommendationsAdapter.differ.submitList(list)
 
         }
-        animeFragmentVM.reviews.observe(viewLifecycleOwner){ list ->
+        animeFragmentVM.reviews.observe(requireParentFragment().viewLifecycleOwner){ list ->
             animeReviewAdapter.differ.submitList(list)
         }
 
-        animeFragmentVM.animePopular.observe(viewLifecycleOwner){ list ->
+        animeFragmentVM.animePopular.observe(requireParentFragment().viewLifecycleOwner){ list ->
             popularAdapter.differ.submitList(list)
         }
 

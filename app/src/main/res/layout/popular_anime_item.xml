@@ -27,7 +27,6 @@
             android:background="@color/black"
             android:fontFamily="@font/sans"
             android:maxLines="1"
-            android:gravity="center"
             android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

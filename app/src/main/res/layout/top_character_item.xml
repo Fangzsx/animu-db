@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_3sdp"
     app:cardElevation="@dimen/_10sdp"
+    app:cardBackgroundColor="@color/gray"
     android:layout_margin="@dimen/_3sdp">
 
     <LinearLayout
