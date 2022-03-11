@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.api
 
 import com.fangzsx.animu_db.models.anime.AnimeResponse
 import com.fangzsx.animu_db.models.animecharacters.AnimeCharactersResponse
+import com.fangzsx.animu_db.models.animereview.AnimeReviewResponse
 import com.fangzsx.animu_db.models.character.CharacterResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
@@ -40,5 +41,7 @@ interface MALapi {
         id : Int
     ) : Response<CharacterResponse>
 
+    @GET("v4/reviews/anime")
+    suspend fun getAnimeReviews() : Response<AnimeReviewResponse>
 
 }

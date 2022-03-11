@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.ui.fragments.anime
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fangzsx.animu_db.adapters.AnimeReviewAdapter
 import com.fangzsx.animu_db.adapters.PopularAnimeAdapter
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.adapters.TopCharactersAdapter
@@ -24,6 +26,7 @@ class AnimeFragment : Fragment() {
     private lateinit var recommendationsAdapter : RecommendationsAdapter
     private lateinit var popularAdapter : PopularAnimeAdapter
     private lateinit var topCharacterAdapter : TopCharactersAdapter
+    private lateinit var animeReviewAdapter : AnimeReviewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,7 @@ class AnimeFragment : Fragment() {
         recommendationsAdapter = RecommendationsAdapter()
         popularAdapter = PopularAnimeAdapter()
         topCharacterAdapter = TopCharactersAdapter()
+        animeReviewAdapter = AnimeReviewAdapter()
     }
 
     override fun onCreateView(
@@ -45,10 +49,18 @@ class AnimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeList()
-
         setupRecommendationsRecyclerView()
         setUpPopularRecyclerView()
-        setUpTopCharactersRecyclerView()
+        setUpAnimeReviewRecyclerView()
+
+        Handler().postDelayed({
+            animeFragmentVM.getTopCharacters()
+            animeFragmentVM.topCharacters.observe(viewLifecycleOwner){ list ->
+                topCharacterAdapter.differ.submitList(list)
+            }
+            setUpTopCharactersRecyclerView()
+        },2000)
+
 
     }
 
@@ -83,6 +95,7 @@ class AnimeFragment : Fragment() {
     }
 
     private fun setUpTopCharactersRecyclerView(){
+
         binding.rvTopCharacters.apply{
             layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
             adapter = topCharacterAdapter
@@ -95,20 +108,28 @@ class AnimeFragment : Fragment() {
         }
     }
 
+    private fun setUpAnimeReviewRecyclerView(){
+        binding.rvReviews.apply {
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = animeReviewAdapter
+        }
+    }
+
     private fun observeList() {
         animeFragmentVM.animeRecommendations.observe(viewLifecycleOwner) { list ->
             recommendationsAdapter.differ.submitList(list)
 
+        }
+        animeFragmentVM.reviews.observe(viewLifecycleOwner){ list ->
+            animeReviewAdapter.differ.submitList(list)
         }
 
         animeFragmentVM.animePopular.observe(viewLifecycleOwner){ list ->
             popularAdapter.differ.submitList(list)
         }
 
-        animeFragmentVM.topCharacters.observe(viewLifecycleOwner){ list ->
-            topCharacterAdapter.differ.submitList(list)
-        }
     }
+
 
 
 }
