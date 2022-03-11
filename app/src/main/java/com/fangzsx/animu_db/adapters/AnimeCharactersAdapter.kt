@@ -7,9 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.AnimeCharacterItemBinding
+import com.fangzsx.animu_db.models.animecharacters.Character
 import com.fangzsx.animu_db.models.animecharacters.Data
 
 class AnimeCharactersAdapter : RecyclerView.Adapter<AnimeCharactersAdapter.CharacterViewHolder>() {
+
+    var onItemClick : ((Character) -> Unit)? = null
 
     inner class CharacterViewHolder(val binding : AnimeCharacterItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -50,6 +53,10 @@ class AnimeCharactersAdapter : RecyclerView.Adapter<AnimeCharactersAdapter.Chara
                 .into(ivAnimeChar)
 
             tvAnimeCharName.text = character.name
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(character)
         }
     }
 

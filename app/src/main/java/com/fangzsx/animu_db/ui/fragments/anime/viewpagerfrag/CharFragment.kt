@@ -1,5 +1,6 @@
 package com.fangzsx.animu_db.ui.fragments.anime.viewpagerfrag
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.adapters.AnimeCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentCharBinding
+import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeCharacterFragmentViewModel
 
 class CharFragment : Fragment() {
@@ -48,6 +50,14 @@ class CharFragment : Fragment() {
             layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
             adapter = charactersAdapter
         }
+
+        charactersAdapter.onItemClick = { character ->
+            Intent(activity, CharacterActivity::class.java).apply{
+                putExtra("CHAR_ID", character.mal_id)
+                startActivity(this)
+            }
+        }
+
     }
 
 }
