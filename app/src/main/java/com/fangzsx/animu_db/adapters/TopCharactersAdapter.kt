@@ -2,10 +2,12 @@ package com.fangzsx.animu_db.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.databinding.TopCharacterItemBinding
 import com.fangzsx.animu_db.models.topcharacters.Data
 
@@ -39,12 +41,22 @@ class TopCharactersAdapter : RecyclerView.Adapter<TopCharactersAdapter.Character
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val character = differ.currentList[position]
 
+        when(position){
+            0 -> holder.binding.tvTopAnimeCharRanking.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.gold))
+            1 -> holder.binding.tvTopAnimeCharRanking.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.silver))
+            2 -> holder.binding.tvTopAnimeCharRanking.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.bronze))
+            else -> holder.binding.tvTopAnimeCharRanking.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.gray))
+
+
+        }
+
         holder.binding.apply {
             Glide
                 .with(holder.itemView)
                 .load(character.images.jpg.image_url)
                 .into(ivTopAnimeChar)
             tvTopAnimeCharName.text = character.name
+            tvTopAnimeCharRanking.text = "${position + 1}"
         }
 
         holder.itemView.setOnClickListener {

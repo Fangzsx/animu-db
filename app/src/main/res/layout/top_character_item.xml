@@ -8,27 +8,50 @@
     app:cardBackgroundColor="@color/gray"
     android:layout_margin="@dimen/_3sdp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/iv_top_anime_char"
-            android:layout_width="@dimen/_70sdp"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center"
-            android:layout_height="@dimen/_110sdp"/>
-        <TextView
-            android:id="@+id/tv_top_anime_char_name"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:textSize="@dimen/_10sdp"
-            android:text="Char name"
-            android:fontFamily="@font/sans"
-            android:background="@color/black"
-            android:gravity="center"/>
+        android:layout_height="match_parent">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/black"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/iv_top_anime_char"
+                android:layout_width="@dimen/_70sdp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_110sdp"/>
+            <TextView
+                android:id="@+id/tv_top_anime_char_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_10sdp"
+                android:text="Char name"
+                android:fontFamily="@font/sans"
+                android:background="@color/black"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_top_anime_char_ranking"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            android:background="@color/gray"
+            android:text="1"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.cardview.widget.CardView>

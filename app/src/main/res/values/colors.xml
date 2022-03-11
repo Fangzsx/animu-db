@@ -10,4 +10,7 @@
     <color name="blue">#03A9F4</color>
     <color name="gray">#4B4A4A</color>
     <color name="red">#FF1100</color>
+    <color name="gold">#FFC107</color>
+    <color name="silver">#4E4D4D</color>
+    <color name="bronze">#7A2D15</color>
 </resources>
