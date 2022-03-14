@@ -1,10 +1,13 @@
 package com.fangzsx.animu_db.ui.activities
 
+import android.content.Intent
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.ActivityReviewBinding
+
 
 class ReviewActivity : AppCompatActivity() {
     private lateinit var binding : ActivityReviewBinding
@@ -35,6 +38,7 @@ class ReviewActivity : AppCompatActivity() {
                 .load(image)
                 .into(ivReviewSrc)
 
+            //set review score fields
             tvReviewTitle.text = title
             tvOverall.text = "$overallScore/10"
             tvStory.text = "$storyScore/10"
@@ -44,17 +48,21 @@ class ReviewActivity : AppCompatActivity() {
             tvSound.text = "$soundScore/10"
             tvReview.text = "\"$reviewBody\""
 
-            //user
-
+            //reviewer data
             Glide
                 .with(this@ReviewActivity)
                 .load(userImage)
                 .into(ivUser)
-
             tvUsername.text = user
-
             tvProfileUrl.paintFlags = Paint.UNDERLINE_TEXT_FLAG
             tvProfileUrl.text = userURL
+
+            //set intent to view reviewer's data
+            tvProfileUrl.setOnClickListener {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(userURL)
+                startActivity(i)
+            }
         }
 
     }

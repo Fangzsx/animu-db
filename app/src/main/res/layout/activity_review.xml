@@ -55,6 +55,8 @@
                 android:fontFamily="@font/sans"
                 android:textSize="@dimen/_10sdp"
                 android:text="Anime Title"
+                android:maxLength="30"
+                android:ellipsize="marquee"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintStart_toEndOf="@id/tv_review_title_label"
                 app:layout_constraintTop_toTopOf="@id/tv_review_title_label"/>
@@ -234,6 +236,8 @@
                 android:id="@+id/tv_review_made_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_10sdp"
                 android:text="This review was made by: "
                 app:layout_constraintTop_toBottomOf="@id/tv_review"
                 app:layout_constraintStart_toStartOf="@id/tv_review"
@@ -283,6 +287,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_username_label"
                 app:layout_constraintStart_toEndOf="@+id/tv_username_label"
                 app:layout_constraintTop_toTopOf="@+id/tv_username_label" />
@@ -293,6 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:textStyle="italic"
+                android:textSize="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="@id/tv_profile_url_label"
                 app:layout_constraintStart_toEndOf="@id/tv_profile_url_label"/>
 
