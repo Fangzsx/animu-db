@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Animudb">
         <activity
+            android:name=".ui.activities.ReviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.CharacterActivity"
             android:exported="false" />
         <activity
