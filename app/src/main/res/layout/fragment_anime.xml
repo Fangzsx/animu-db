@@ -34,10 +34,12 @@
                     android:textSize="@dimen/_12sdp"
                     android:fontFamily="@font/sans"
                     android:textStyle="bold"
+                    android:gravity="center_vertical"
                     android:textColor="@color/blue"
                     android:layout_weight="3"/>
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="wrap_content"
+                    app:iconifiedByDefault="true"
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_search"
                     android:scaleType="fitCenter"/>

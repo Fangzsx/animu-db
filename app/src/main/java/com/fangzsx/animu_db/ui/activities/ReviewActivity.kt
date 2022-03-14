@@ -59,11 +59,15 @@ class ReviewActivity : AppCompatActivity() {
 
             //set intent to view reviewer's data
             tvProfileUrl.setOnClickListener {
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(userURL)
-                startActivity(i)
+                goToProfileURL(userURL)
             }
         }
 
+    }
+
+    private fun goToProfileURL(userURL: String?) {
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(userURL)
+        startActivity(i)
     }
 }
