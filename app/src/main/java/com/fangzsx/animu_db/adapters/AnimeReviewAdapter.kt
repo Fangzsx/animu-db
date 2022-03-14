@@ -42,7 +42,7 @@ class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHol
 
         holder.binding.apply {
             tvOverall.text = "${review.scores.overall}/10"
-            tvStory.text = "${review.scores.story}"
+            tvStory.text = "${review.scores.story}/10"
             tvAnimation.text = "${review.scores.animation}/10"
             tvCharacter.text = "${review.scores.character}/10"
             tvEnjoyment.text = "${review.scores.enjoyment}/10"

@@ -17,10 +17,9 @@ class CharacterActivity : AppCompatActivity() {
         characterVM = CharacterActivityViewModel()
         setContentView(binding.root)
 
+        loadingState()
         val id = intent.getIntExtra("CHAR_ID", 0)
         characterVM.getCharacterByID(id)
-
-        loadingState()
 
         characterVM.character.observe(this){ charData ->
 
