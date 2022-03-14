@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class AnimeCharacterFragmentViewModel : ViewModel() {
 
-    var characters : MutableLiveData<List<Data>> = MutableLiveData()
+    var characters : MutableLiveData<List<Data?>> = MutableLiveData()
 
     fun getCharactersByAnimeID(id : Int) = viewModelScope.launch {
         val response = RetrofitInstance.malAPI.getCharactersByAnimeID(id)

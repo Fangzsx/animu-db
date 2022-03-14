@@ -17,6 +17,7 @@ import com.fangzsx.animu_db.adapters.TopCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.ui.activities.CharacterActivity
+import com.fangzsx.animu_db.ui.activities.ReviewActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
 
 
@@ -110,6 +111,8 @@ class AnimeFragment : Fragment() {
             adapter = topCharacterAdapter
         }
         topCharacterAdapter.onItemClick = { charData ->
+
+
             Intent(activity, CharacterActivity::class.java).apply {
                 putExtra("CHAR_ID", charData.mal_id)
                 startActivity(this)
@@ -121,6 +124,27 @@ class AnimeFragment : Fragment() {
         binding.rvReviews.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = animeReviewAdapter
+        }
+
+        animeReviewAdapter.onItemClick = {  review ->
+
+            Intent(activity, ReviewActivity::class.java).apply {
+                putExtra("IMAGE_URL", review.entry.images.jpg.image_url)
+                putExtra("ANIME_REVIEW_TITLE", review.entry.title)
+                putExtra("REVIEW_BY", review.user.username)
+                putExtra("REVIEW_BY_IMAGE", review.user.images.jpg.image_url)
+                putExtra("REVIEW_BY_URL",review.user.url)
+
+                putExtra("REVIEW_OVERALL", review.scores.overall)
+                putExtra("REVIEW_STORY",review.scores.story)
+                putExtra("REVIEW_ANIMATION",review.scores.animation)
+                putExtra("REVIEW_SOUND",review.scores.sound)
+                putExtra("REVIEW_CHARACTER", review.scores.character)
+                putExtra("REVIEW_ENJOYMENT",review.scores.enjoyment)
+                putExtra("REVIEW_BODY", review.review)
+
+                startActivity(this)
+            }
         }
     }
 

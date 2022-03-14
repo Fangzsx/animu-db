@@ -3,6 +3,7 @@ package com.fangzsx.animu_db.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.ActivityCharacterBinding
 import com.fangzsx.animu_db.viewmodels.anime.CharacterActivityViewModel

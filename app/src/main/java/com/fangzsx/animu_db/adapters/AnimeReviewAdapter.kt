@@ -12,6 +12,8 @@ import java.lang.StringBuilder
 
 class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHolder>() {
 
+    var onItemClick : ((Data) -> Unit)? = null
+
     inner class ReviewViewHolder(val binding : AnimeReviewItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Data>(){
@@ -48,13 +50,16 @@ class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHol
             tvEnjoyment.text = "${review.scores.enjoyment}/10"
             tvReviewBy.text = review.user.username
             tvSound.text = "${review.scores.sound}/10"
-            tvReview.text = "\"${review.review}\" "
-
+            tvReview.text = "\"${review.review}\""
 
             Glide
                 .with(holder.itemView)
                 .load(review.entry.images.jpg.image_url)
-                .into(ivReviewAnime)
+                .into(ivReviewSrc)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(review)
         }
     }
 
