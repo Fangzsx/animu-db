@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.ActivityCharacterBinding
 import com.fangzsx.animu_db.viewmodels.anime.CharacterActivityViewModel
@@ -15,7 +16,7 @@ class CharacterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCharacterBinding.inflate(layoutInflater)
-        characterVM = CharacterActivityViewModel()
+        characterVM = ViewModelProvider(this).get(CharacterActivityViewModel::class.java)
         setContentView(binding.root)
 
         loadingState()
