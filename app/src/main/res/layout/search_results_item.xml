@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_120sdp"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/_200sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_3sdp"
     app:cardElevation="@dimen/_12sdp"
@@ -31,8 +31,6 @@
             android:ellipsize="end"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"/>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
