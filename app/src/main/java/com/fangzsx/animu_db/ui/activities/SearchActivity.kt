@@ -32,6 +32,7 @@ class SearchActivity : AppCompatActivity() {
                 query?.let { q ->
                     searchVM.getAnimeTitlesByQuery(q)
                     searchVM.searchResults.observe(this@SearchActivity){ results ->
+                        results.sortedBy { it.popularity }
                         searchResultAdapter.differ.submitList(results)
                     }
                 }
@@ -47,6 +48,8 @@ class SearchActivity : AppCompatActivity() {
 
 
     }
+
+
 
     private fun setUpResultsRecyclerView() {
         binding.rvResults.apply {
