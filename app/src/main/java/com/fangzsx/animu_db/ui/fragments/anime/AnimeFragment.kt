@@ -3,13 +3,18 @@ package com.fangzsx.animu_db.ui.fragments.anime
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.adapters.AnimeReviewAdapter
 import com.fangzsx.animu_db.adapters.PopularAnimeAdapter
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
@@ -57,7 +62,27 @@ class AnimeFragment : Fragment() {
         loadTopCharactersAfter4Seconds()
 
 
+        val searchView = binding.svAnime
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(activity, query, Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+
+                return false
+
+            }
+
+        })
+
+
     }
+
+
 
     private fun loadTopCharactersAfter4Seconds() {
         Handler().postDelayed({

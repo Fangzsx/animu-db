@@ -3,7 +3,6 @@ package com.fangzsx.animu_db.viewmodels.anime
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fangzsx.animu_db.models.character.CharacterResponse
 import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.retrofit.RetrofitInstance
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +14,7 @@ class AnimeFragmentViewModel : ViewModel() {
     val animePopular : MutableLiveData<List<com.fangzsx.animu_db.models.popular.Data>> = MutableLiveData()
     val topCharacters : MutableLiveData<List<com.fangzsx.animu_db.models.topcharacters.Data>> = MutableLiveData()
     val reviews : MutableLiveData<List<com.fangzsx.animu_db.models.animereview.Data>> = MutableLiveData()
+    val searchResults : MutableLiveData<List<com.fangzsx.animu_db.models.searchAnime.Data>> = MutableLiveData()
 
 
 
@@ -33,6 +33,17 @@ class AnimeFragmentViewModel : ViewModel() {
 
             }
         }
+    }
+
+    fun getAnimeTitleByQuery(query : String) = viewModelScope.launch {
+        val response = RetrofitInstance.malAPI.searchAnimeTitleByQuery(query)
+        if(response.isSuccessful){
+            response.body()?.let { list ->
+                searchResults.postValue(list.data)
+            }
+        }
+
+
     }
 
     private fun getPopularAnime() = viewModelScope.launch {

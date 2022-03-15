@@ -6,10 +6,12 @@ import com.fangzsx.animu_db.models.animereview.AnimeReviewResponse
 import com.fangzsx.animu_db.models.character.CharacterResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
+import com.fangzsx.animu_db.models.searchAnime.SearchAnimeResponse
 import com.fangzsx.animu_db.models.topcharacters.TopCharactersResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MALapi {
 
@@ -43,5 +45,11 @@ interface MALapi {
 
     @GET("v4/reviews/anime")
     suspend fun getAnimeReviews() : Response<AnimeReviewResponse>
+
+    @GET("v4/anime?")
+    suspend fun searchAnimeTitleByQuery(
+        @Query("q")
+        title : String
+    ) : Response<SearchAnimeResponse>
 
 }
