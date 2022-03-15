@@ -25,21 +25,21 @@ class CharacterActivity : AppCompatActivity() {
 
         characterVM.character.observe(this){ charData ->
 
-            charData?.let {
+            charData?.let { data ->
                 binding.apply {
-                    clToolbar.title = charData.name
+                    clToolbar.title = data.name
                     Glide
                         .with(this@CharacterActivity)
-                        .load(charData.images.jpg.image_url)
+                        .load(data.images.jpg.image_url)
                         .into(ivCharImage)
 
-                    tvFullname.text = charData.name
-                    tvFullnameKanji.text = charData.name_kanji
-                    tvNicknames.text = charData.nicknames.toString()
-                    if(charData.about == null){
+                    tvFullname.text = data.name
+                    tvFullnameKanji.text = data.name_kanji
+                    tvNicknames.text = data.nicknames.toString()
+                    if(data.about == null){
                         tvAbout.text = "No Information"
                     }else{
-                        tvAbout.text = charData.about
+                        tvAbout.text = data.about
                     }
 
                 }
