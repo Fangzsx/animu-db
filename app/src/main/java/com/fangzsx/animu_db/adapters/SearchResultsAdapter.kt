@@ -11,6 +11,8 @@ import com.fangzsx.animu_db.models.searchAnime.Data
 
 class SearchResultsAdapter : RecyclerView.Adapter<SearchResultsAdapter.ResultViewHolder>() {
 
+    var onItemClick : ((Data) -> Unit)? = null
+
     inner class ResultViewHolder(val binding : SearchResultsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Data>(){
@@ -39,11 +41,14 @@ class SearchResultsAdapter : RecyclerView.Adapter<SearchResultsAdapter.ResultVie
 
         holder.binding.apply {
             tvSearchTitle.text  = result.title
-
             Glide
                 .with(holder.itemView)
                 .load(result.images.jpg.image_url)
                 .into(ivSearchSrc)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(result)
         }
     }
 

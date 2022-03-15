@@ -1,5 +1,6 @@
 package com.fangzsx.animu_db.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -89,6 +90,14 @@ class SearchActivity : AppCompatActivity() {
         binding.rvResults.apply {
             layoutManager = GridLayoutManager(this@SearchActivity, 2, GridLayoutManager.VERTICAL, false)
             adapter = searchResultAdapter
+        }
+
+        searchResultAdapter.onItemClick = { data ->
+            Intent(this@SearchActivity, AnimeActivity::class.java).apply {
+                putExtra("MAL_ID", data.mal_id)
+                startActivity(this)
+                finish()
+            }
         }
     }
 }
