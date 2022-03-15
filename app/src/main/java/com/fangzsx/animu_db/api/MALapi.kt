@@ -47,7 +47,7 @@ interface MALapi {
     suspend fun getAnimeReviews() : Response<AnimeReviewResponse>
 
     @GET("v4/anime?")
-    suspend fun searchAnimeTitleByQuery(
+    suspend fun searchAnimeTitlesByQuery(
         @Query("q")
         title : String
     ) : Response<SearchAnimeResponse>

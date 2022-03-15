@@ -35,8 +35,8 @@ class AnimeFragmentViewModel : ViewModel() {
         }
     }
 
-    fun getAnimeTitleByQuery(query : String) = viewModelScope.launch {
-        val response = RetrofitInstance.malAPI.searchAnimeTitleByQuery(query)
+    fun getAnimeTitlesByQuery(query : String) = viewModelScope.launch {
+        val response = RetrofitInstance.malAPI.searchAnimeTitlesByQuery(query)
         if(response.isSuccessful){
             response.body()?.let { list ->
                 searchResults.postValue(list.data)

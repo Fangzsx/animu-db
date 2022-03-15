@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
+import android.widget.CursorAdapter
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +24,8 @@ import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.ui.activities.ReviewActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 class AnimeFragment : Fragment() {
@@ -60,25 +62,7 @@ class AnimeFragment : Fragment() {
         setUpPopularRecyclerView()
         setUpAnimeReviewRecyclerView()
         loadTopCharactersAfter4Seconds()
-
-
-        val searchView = binding.svAnime
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(activity, query, Toast.LENGTH_SHORT).show()
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-
-                return false
-
-            }
-
-        })
-
+        
 
     }
 
