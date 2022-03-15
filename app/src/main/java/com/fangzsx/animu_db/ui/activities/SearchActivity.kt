@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,11 +30,13 @@ class SearchActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
 
+                loadingState()
                 query?.let { q ->
                     searchVM.getAnimeTitlesByQuery(q)
                     searchVM.searchResults.observe(this@SearchActivity){ results ->
                         results.sortedBy { it.popularity }
                         searchResultAdapter.differ.submitList(results)
+                        successState()
                     }
                 }
                 return false
@@ -41,14 +44,24 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                //clear list
+                searchResultAdapter.differ
+
                 return false
             }
 
         })
-
-
     }
 
+    private fun loadingState(){
+        binding.progressBar.visibility = View.VISIBLE
+        binding.rvResults.visibility = View.INVISIBLE
+    }
+
+    private fun successState(){
+        binding.progressBar.visibility = View.INVISIBLE
+        binding.rvResults.visibility = View.VISIBLE
+    }
 
 
     private fun setUpResultsRecyclerView() {

@@ -13,7 +13,7 @@ class SearchResultsAdapter : RecyclerView.Adapter<SearchResultsAdapter.ResultVie
 
     inner class ResultViewHolder(val binding : SearchResultsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    val differCallback = object : DiffUtil.ItemCallback<Data>(){
+    private val differCallback = object : DiffUtil.ItemCallback<Data>(){
         override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
             return oldItem.mal_id == newItem.mal_id
         }
