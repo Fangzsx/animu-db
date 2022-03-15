@@ -23,6 +23,7 @@ import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.ui.activities.ReviewActivity
+import com.fangzsx.animu_db.ui.activities.SearchActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -62,7 +63,12 @@ class AnimeFragment : Fragment() {
         setUpPopularRecyclerView()
         setUpAnimeReviewRecyclerView()
         loadTopCharactersAfter4Seconds()
-        
+
+        binding.ivSearch.setOnClickListener {
+            Intent(activity, SearchActivity::class.java).also {
+                startActivity(it)
+            }
+        }
 
     }
 
