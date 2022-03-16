@@ -18,7 +18,6 @@ interface MALapi {
     @GET("v4/recommendations/anime")
     suspend fun getAnimeRecommendation() : Response<RecommendationsResponse>
 
-
     @GET("v4/anime/{id}")
     suspend fun getAnimeByID(
         @Path("id")

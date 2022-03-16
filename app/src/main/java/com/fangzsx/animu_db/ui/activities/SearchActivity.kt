@@ -96,7 +96,6 @@ class SearchActivity : AppCompatActivity() {
             Intent(this@SearchActivity, AnimeActivity::class.java).apply {
                 putExtra("MAL_ID", data.mal_id)
                 startActivity(this)
-                finish()
             }
         }
     }
