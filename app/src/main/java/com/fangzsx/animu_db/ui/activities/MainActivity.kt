@@ -1,11 +1,16 @@
 package com.fangzsx.animu_db.ui.activities
 
+import android.annotation.TargetApi
+import android.os.Build
 import android.os.Bundle
+import android.webkit.PermissionRequest
+import android.webkit.WebChromeClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding

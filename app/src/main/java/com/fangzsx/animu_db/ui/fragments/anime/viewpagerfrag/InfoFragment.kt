@@ -62,6 +62,7 @@ class InfoFragment : Fragment(){
 
         //play trailer
         val youtubeID = animeData.trailer.youtube_id
+        
 
         if(youtubeID == null){
             Toast.makeText(activity, "Trailer not available", Toast.LENGTH_SHORT).show()
@@ -98,6 +99,7 @@ class InfoFragment : Fragment(){
 
         binding.apply {
             progressBar.visibility = View.INVISIBLE
+            vvTrailer.visibility = View.VISIBLE
             tvJapaneseTitle.visibility = View.VISIBLE
             tvJapaneseTitleLabel.visibility = View.VISIBLE
             tvEnglishTitle.visibility = View.VISIBLE
@@ -122,6 +124,7 @@ class InfoFragment : Fragment(){
 
     private fun onLoadingState() {
         binding.apply {
+            vvTrailer.visibility = View.INVISIBLE
             progressBar.visibility = View.VISIBLE
             tvJapaneseTitle.visibility = View.INVISIBLE
             tvJapaneseTitleLabel.visibility = View.INVISIBLE

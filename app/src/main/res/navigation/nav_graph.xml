@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_anime" />
     <fragment
         android:id="@+id/mangaFragment"
-        android:name="com.fangzsx.animu_db.ui.fragments.MangaFragment"
+        android:name="com.fangzsx.animu_db.ui.fragments.manga.MangaFragment"
         android:label="fragment_manga"
         tools:layout="@layout/fragment_manga" />
     <fragment

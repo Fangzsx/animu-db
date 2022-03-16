@@ -16,6 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildFeatures{
         viewBinding true
     }
@@ -63,5 +64,6 @@ dependencies {
 
     //android youtube player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
+
 
 }
