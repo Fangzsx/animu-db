@@ -21,11 +21,13 @@ class CharacterActivity : AppCompatActivity() {
 
         loadingState()
         val id = intent.getIntExtra("CHAR_ID", 0)
+
         characterVM.getCharacterByID(id)
 
         characterVM.character.observe(this){ charData ->
 
             charData?.let { data ->
+
                 binding.apply {
                     clToolbar.title = data.name
                     Glide

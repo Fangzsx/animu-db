@@ -44,6 +44,7 @@ class CharFragment : Fragment() {
 
         animeCharVM.getCharactersByAnimeID(id)
         animeCharVM.characters.observe(viewLifecycleOwner){ characterList ->
+
             charactersAdapter.differ.submitList(characterList)
         }
 
@@ -53,6 +54,7 @@ class CharFragment : Fragment() {
         }
 
         charactersAdapter.onItemClick = { character ->
+
             Intent(activity, CharacterActivity::class.java).apply{
                 putExtra("CHAR_ID", character.mal_id)
                 startActivity(this)

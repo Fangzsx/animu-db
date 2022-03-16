@@ -59,6 +59,15 @@ class InfoFragment : Fragment(){
 
     private fun setUpFragment(animeData: Data) {
         //setup fields
+
+        //play trailer
+        val youtubeID = animeData.trailer.youtube_id
+
+        if(youtubeID == null){
+            Toast.makeText(activity, "Trailer not available", Toast.LENGTH_SHORT).show()
+        } else{
+            playTrailer(youtubeID)
+        }
         val fromToAiredData = extractDate(animeData)
         binding.apply {
             tvOriginalTitle.text = animeData.title
@@ -71,18 +80,6 @@ class InfoFragment : Fragment(){
             tvScore.text = "${animeData.score}/10.0"
             tvSynopsis.text = animeData.synopsis
         }
-
-        //play trailer
-
-        val youtubeID = animeData.trailer.youtube_id
-
-        if(youtubeID == null){
-            Toast.makeText(activity, "Trailer not available", Toast.LENGTH_SHORT).show()
-        } else{
-            playTrailer(youtubeID)
-        }
-
-
     }
 
     private fun extractDate(data : Data) : String{
@@ -150,12 +147,11 @@ class InfoFragment : Fragment(){
     private fun playTrailer(youtubeID: String) {
         val youTubePlayerView: YouTubePlayerView = binding.vvTrailer
         lifecycle.addObserver(youTubePlayerView)
+
+
         youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
             override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
                 youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
-
-                val tracker = YouTubePlayerTracker()
-                youTubePlayer.addListener(tracker)
             }
         })
 

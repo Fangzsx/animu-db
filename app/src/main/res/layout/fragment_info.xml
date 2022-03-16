@@ -17,6 +17,7 @@
                 android:id="@+id/vv_trailer"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
+                app:autoPlay="false"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

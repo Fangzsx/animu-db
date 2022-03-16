@@ -17,11 +17,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var searchVM : SearchActivityViewModel
     private lateinit var searchResultAdapter : SearchResultsAdapter
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -44,14 +39,11 @@ class SearchActivity : AppCompatActivity() {
                     searchVM.searchResults.observe(this@SearchActivity){ results ->
                         
                         if(results.isNotEmpty()){
-                            results.sortedByDescending { it.popularity }
-                            searchResultAdapter.differ.submitList(results)
+                            searchResultAdapter.differ.submitList(results.sortedBy { it.popularity })
                             successState()
                         }else{
                             noResultState()
                         }
-                        
-                        
                     }
                 }
                 return false
