@@ -59,7 +59,7 @@
                 android:layout_marginStart="@dimen/_8sdp"/>
 
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/rv_recommendations"
                 android:layout_width="match_parent"
                 android:clipToPadding="false"
