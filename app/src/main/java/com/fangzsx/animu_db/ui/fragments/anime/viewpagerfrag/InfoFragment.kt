@@ -12,6 +12,8 @@ import com.fangzsx.animu_db.models.anime.Data
 import com.fangzsx.animu_db.viewmodels.anime.AnimeInfoFragmentViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.util.*
 
@@ -140,11 +142,11 @@ class InfoFragment : Fragment(){
     private fun playTrailer(youtubeID: String) {
         val youTubePlayerView: YouTubePlayerView = binding.vvTrailer
         lifecycle.addObserver(youTubePlayerView)
-
-        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(youtubeID, 0f)
+        youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
+            override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
             }
+
         })
     }
 
