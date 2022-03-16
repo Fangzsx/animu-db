@@ -5,6 +5,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.fangzsx.animu_db.databinding.FragmentInfoBinding
@@ -13,6 +14,8 @@ import com.fangzsx.animu_db.viewmodels.anime.AnimeInfoFragmentViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.util.*
@@ -72,9 +75,14 @@ class InfoFragment : Fragment(){
         //play trailer
 
         val youtubeID = animeData.trailer.youtube_id
-        youtubeID?.let {
-            playTrailer(it)
+
+        if(youtubeID == null){
+            Toast.makeText(activity, "Trailer not available", Toast.LENGTH_SHORT).show()
+        } else{
+            playTrailer(youtubeID)
         }
+
+
     }
 
     private fun extractDate(data : Data) : String{
@@ -145,9 +153,14 @@ class InfoFragment : Fragment(){
         youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
             override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
                 youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
-            }
 
+                val tracker = YouTubePlayerTracker()
+                youTubePlayer.addListener(tracker)
+            }
         })
+
+
+
     }
 
 }
