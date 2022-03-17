@@ -1,6 +1,7 @@
 package com.fangzsx.animu_db.ui.fragments.manga
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,16 @@ class MangaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        mangaFragmentVM.getMangaRecommendation()
+        mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
+            Log.i("asd", list.size.toString())
+            for(item in list){
+                Log.i("test", item.entry[0].title.toString())
+            }
+
+        }
 
 
     }
