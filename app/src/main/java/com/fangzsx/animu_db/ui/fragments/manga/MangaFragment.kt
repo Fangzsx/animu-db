@@ -23,7 +23,6 @@ class MangaFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mangaFragmentVM = ViewModelProvider(this).get(MangaFragmentViewModel::class.java)
-        imageSliderAdapter = ImageSliderAdapter()
     }
 
     override fun onCreateView(
@@ -36,10 +35,10 @@ class MangaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        imageSliderAdapter = ImageSliderAdapter(binding.tvRecommendationTitle)
 
         mangaFragmentVM.getMangaRecommendation()
         mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
-            Log.i("asd", list.size.toString())
 
             imageSliderAdapter.setList(list.subList(0,10))
             binding.isRecommendationsManga.setSliderAdapter(imageSliderAdapter)
@@ -47,10 +46,6 @@ class MangaFragment : Fragment() {
             binding.isRecommendationsManga.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
             binding.isRecommendationsManga.startAutoCycle()
         }
-
-
-
-
 
     }
 

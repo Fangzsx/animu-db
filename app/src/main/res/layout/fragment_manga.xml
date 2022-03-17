@@ -77,10 +77,21 @@
                     app:sliderAutoCycleEnabled="true"
                     app:sliderScrollTimeInSec="3"
                     app:sliderStartAutoCycle="true" />
-
             </androidx.cardview.widget.CardView>
 
-
+            <TextView
+                android:id="@+id/tv_recommendation_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/cv_recommendations"
+                app:layout_constraintStart_toStartOf="parent"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:singleLine="true"
+                android:ellipsize="marquee"/>
 
             <TextView
                 android:id="@+id/tv_popular_manga"
@@ -89,11 +100,11 @@
                 android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/sans"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/cv_recommendations"
+                app:layout_constraintTop_toBottomOf="@id/tv_recommendation_title"
                 app:layout_constraintStart_toStartOf="@id/tv_recommendations"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/blue"
-                android:text="Most Popular Anime"/>
+                android:text="Most Popular Manga"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_popular_manga_now"
                 android:layout_width="wrap_content"
