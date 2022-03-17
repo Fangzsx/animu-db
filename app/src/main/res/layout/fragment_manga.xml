@@ -104,7 +104,7 @@
                 app:layout_constraintStart_toStartOf="@id/tv_recommendations"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/blue"
-                android:text="Most Popular Manga"/>
+                android:text="Most Popular"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_popular_manga_now"
                 android:layout_width="wrap_content"
