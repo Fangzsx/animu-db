@@ -77,7 +77,7 @@
                 app:layout_constraintStart_toStartOf="@id/rv_recommendations"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/blue"
-                android:text="Most Popular Anime"/>
+                android:text="Top 10 Most Popular Anime"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_popular_now"
                 android:layout_width="wrap_content"

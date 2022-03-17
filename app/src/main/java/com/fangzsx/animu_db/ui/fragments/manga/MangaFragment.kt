@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.adapters.ImageSliderAdapter
+import com.fangzsx.animu_db.adapters.PopularMangaAdapter
 import com.fangzsx.animu_db.databinding.FragmentMangaBinding
 import com.fangzsx.animu_db.viewmodels.manga.MangaFragmentViewModel
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
@@ -18,11 +20,13 @@ class MangaFragment : Fragment() {
     private lateinit var binding: FragmentMangaBinding
     private lateinit var mangaFragmentVM: MangaFragmentViewModel
     private lateinit var imageSliderAdapter : ImageSliderAdapter
+    private lateinit var popularMangaAdapter : PopularMangaAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mangaFragmentVM = ViewModelProvider(this).get(MangaFragmentViewModel::class.java)
+        popularMangaAdapter = PopularMangaAdapter()
     }
 
     override fun onCreateView(
@@ -36,17 +40,44 @@ class MangaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         imageSliderAdapter = ImageSliderAdapter(binding.tvRecommendationTitle)
+        loadingState()
 
         mangaFragmentVM.getMangaRecommendation()
         mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
-
             imageSliderAdapter.setList(list.subList(0,10))
-            binding.isRecommendationsManga.setSliderAdapter(imageSliderAdapter)
-            binding.isRecommendationsManga.setIndicatorAnimation(IndicatorAnimationType.WORM)
-            binding.isRecommendationsManga.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
-            binding.isRecommendationsManga.startAutoCycle()
+            successState()
+            setUpRecommendationRecyclerView()
         }
 
+        mangaFragmentVM.getTopManga()
+        mangaFragmentVM.topManga.observe(viewLifecycleOwner){ list ->
+
+            Log.i("test", list.size.toString())
+            popularMangaAdapter.differ.submitList(list)
+        }
+
+        binding.rvPopularMangaNow.apply{
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = popularMangaAdapter
+        }
+
+
+    }
+
+    private fun setUpRecommendationRecyclerView() {
+        binding.isRecommendationsManga.setSliderAdapter(imageSliderAdapter)
+        binding.isRecommendationsManga.setIndicatorAnimation(IndicatorAnimationType.WORM)
+        binding.isRecommendationsManga.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+        binding.isRecommendationsManga.startAutoCycle()
+    }
+
+
+    private fun successState() {
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
+    private fun loadingState() {
+        binding.progressBar.visibility = View.VISIBLE
     }
 
 
