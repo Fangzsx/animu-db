@@ -164,15 +164,15 @@ class AnimeFragment : Fragment() {
     }
 
     private fun observeList() {
-        animeFragmentVM.animeRecommendations.observe(requireParentFragment().viewLifecycleOwner) { list ->
+        animeFragmentVM.animeRecommendations.observe(viewLifecycleOwner) { list ->
             recommendationsAdapter.differ.submitList(list)
 
         }
-        animeFragmentVM.reviews.observe(requireParentFragment().viewLifecycleOwner){ list ->
+        animeFragmentVM.reviews.observe(viewLifecycleOwner){ list ->
             animeReviewAdapter.differ.submitList(list)
         }
 
-        animeFragmentVM.animePopular.observe(requireParentFragment().viewLifecycleOwner){ list ->
+        animeFragmentVM.animePopular.observe(viewLifecycleOwner){ list ->
             popularAdapter.differ.submitList(list)
         }
 

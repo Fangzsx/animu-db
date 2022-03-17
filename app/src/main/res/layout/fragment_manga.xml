@@ -60,7 +60,7 @@
 
 
             <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/rv_recommendations"
+                android:id="@+id/is_recommendations_manga"
                 android:layout_width="match_parent"
                 android:clipToPadding="false"
                 android:layout_height="@dimen/_200sdp"
@@ -74,70 +74,19 @@
                 android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/sans"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/rv_recommendations"
-                app:layout_constraintStart_toStartOf="@id/rv_recommendations"
+                app:layout_constraintTop_toBottomOf="@id/is_recommendations_manga"
+                app:layout_constraintStart_toStartOf="@id/is_recommendations_manga"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:textColor="@color/blue"
                 android:text="Most Popular Anime"/>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_popular_now"
+                android:id="@+id/rv_popular_manga_now"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_200sdp"
                 app:layout_constraintStart_toStartOf="@id/tv_popular_manga"
                 app:layout_constraintTop_toBottomOf="@id/tv_popular_manga"
                 android:layout_marginTop="@dimen/_8sdp"/>
-
-            <TextView
-                android:id="@+id/tv_recent_reviews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/rv_popular_now"
-                app:layout_constraintStart_toStartOf="@id/rv_popular_now"
-                android:fontFamily="@font/sans"
-                android:textStyle="bold"
-                android:textSize="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:textColor="@color/blue"
-                android:text="Recent Reviews"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_reviews"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_200sdp"
-                app:layout_constraintTop_toBottomOf="@id/tv_recent_reviews"
-                app:layout_constraintStart_toStartOf="@id/tv_recent_reviews"
-                android:layout_marginTop="@dimen/_8sdp"/>
-
-            <TextView
-                android:id="@+id/tv_top_characters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
-                app:layout_constraintTop_toBottomOf="@id/rv_reviews"
-                app:layout_constraintStart_toStartOf="@id/rv_reviews"
-                android:fontFamily="@font/sans"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                android:textColor="@color/blue"
-                android:text="Top 10 Characters of All Time"/>
-
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/progress_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_top_characters"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_top_characters"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_top_characters"/>
+            
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

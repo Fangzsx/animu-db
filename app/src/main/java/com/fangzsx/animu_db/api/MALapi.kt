@@ -15,6 +15,7 @@ import retrofit2.http.Query
 
 interface MALapi {
 
+    //anime
     @GET("v4/recommendations/anime")
     suspend fun getAnimeRecommendation() : Response<RecommendationsResponse>
 
@@ -50,5 +51,10 @@ interface MALapi {
         @Query("q")
         title : String
     ) : Response<SearchAnimeResponse>
+
+    //manga
+    @GET("v4/recommendations/manga")
+    suspend fun getMangaRecommendation() : Response<RecommendationsResponse>
+
 
 }
