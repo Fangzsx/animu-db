@@ -42,17 +42,7 @@ class MangaFragment : Fragment() {
         imageSliderAdapter = ImageSliderAdapter(binding.tvRecommendationTitle)
         loadingState()
 
-        mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
-            imageSliderAdapter.setList(list.subList(0,10))
-            successState()
-            setUpRecommendationRecyclerView()
-        }
-
-        mangaFragmentVM.topManga.observe(viewLifecycleOwner){ list ->
-
-            Log.i("test", list.size.toString())
-            popularMangaAdapter.differ.submitList(list)
-        }
+        observeList()
 
         binding.rvPopularMangaNow.apply{
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -60,6 +50,18 @@ class MangaFragment : Fragment() {
         }
 
 
+    }
+
+    private fun observeList() {
+        mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
+            imageSliderAdapter.setList(list.subList(0, 10))
+            successState()
+            setUpRecommendationRecyclerView()
+        }
+
+        mangaFragmentVM.topManga.observe(viewLifecycleOwner) { list ->
+            popularMangaAdapter.differ.submitList(list)
+        }
     }
 
     private fun setUpRecommendationRecyclerView() {
