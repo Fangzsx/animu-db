@@ -4,6 +4,7 @@ import com.fangzsx.animu_db.models.anime.AnimeResponse
 import com.fangzsx.animu_db.models.animecharacters.AnimeCharactersResponse
 import com.fangzsx.animu_db.models.review.ReviewResponse
 import com.fangzsx.animu_db.models.character.CharacterResponse
+import com.fangzsx.animu_db.models.manga.MangaResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
 import com.fangzsx.animu_db.models.searchAnime.SearchAnimeResponse
@@ -62,6 +63,12 @@ interface MALapi {
 
     @GET("/v4/reviews/manga")
     suspend fun getMangaReviews() : Response<ReviewResponse>
+
+    @GET("/v4/manga/{id}")
+    suspend fun getMangaByID(
+        @Path("id")
+        id : Int
+    ) : Response<MangaResponse>
 
 
 

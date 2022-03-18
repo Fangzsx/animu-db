@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.RecommendationMangaItemBinding
 import com.fangzsx.animu_db.models.recommendation.Data
+import com.fangzsx.animu_db.models.recommendation.Entry
 import com.smarteist.autoimageslider.SliderViewAdapter
 
 class ImageSliderAdapter(var textView : TextView) : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>() {
@@ -13,6 +14,7 @@ class ImageSliderAdapter(var textView : TextView) : SliderViewAdapter<ImageSlide
     inner class ImageViewHolder(val binding : RecommendationMangaItemBinding) : SliderViewAdapter.ViewHolder(binding.root)
 
     private var list : List<Data> = mutableListOf()
+    var onItemClick : ((Entry) -> Unit)? = null
 
 
     fun setList(data : List<Data>){
@@ -37,7 +39,7 @@ class ImageSliderAdapter(var textView : TextView) : SliderViewAdapter<ImageSlide
 
     override fun onBindViewHolder(viewHolder: ImageViewHolder?, position: Int) {
         val recommended = list[position].entry[0]
-
+        textView.text = recommended.title
 
         viewHolder?.binding?.apply {
             Glide
@@ -46,7 +48,10 @@ class ImageSliderAdapter(var textView : TextView) : SliderViewAdapter<ImageSlide
                 .into(ivRecommendedSrc)
         }
 
-        textView.text = recommended.title
+
+        viewHolder!!.itemView.setOnClickListener {
+            onItemClick?.invoke(recommended)
+        }
     }
 
 

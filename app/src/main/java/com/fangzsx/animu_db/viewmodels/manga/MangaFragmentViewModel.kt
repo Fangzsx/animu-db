@@ -20,6 +20,9 @@ class MangaFragmentViewModel : ViewModel() {
     private val _mangaReviews : MutableLiveData<List<com.fangzsx.animu_db.models.review.Data>> = MutableLiveData()
     val mangaReviews : LiveData<List<com.fangzsx.animu_db.models.review.Data>> = _mangaReviews
 
+    private val _manga : MutableLiveData<com.fangzsx.animu_db.models.manga.Data> = MutableLiveData()
+    val manga : LiveData<com.fangzsx.animu_db.models.manga.Data> = _manga
+
 
     init {
         getMangaReviews()
@@ -49,6 +52,15 @@ class MangaFragmentViewModel : ViewModel() {
         if(response.isSuccessful){
             response.body()?.let { reviewResponse ->
                 _mangaReviews.postValue(reviewResponse.data)
+            }
+        }
+    }
+
+    fun getMangaByID(id : Int) = viewModelScope.launch {
+        val response = RetrofitInstance.malAPI.getMangaByID(id)
+        if(response.isSuccessful){
+            response.body()?.let{ mangaResponse ->
+                _manga.postValue(mangaResponse.data)
             }
         }
     }
