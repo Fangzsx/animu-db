@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.models.animereview
+package com.fangzsx.animu_db.models.review
 
 data class Pagination(
     val has_next_page: Boolean,

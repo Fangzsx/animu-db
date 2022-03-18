@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.AnimeReviewItemBinding
-import com.fangzsx.animu_db.models.animereview.Data
-import java.lang.StringBuilder
+import com.fangzsx.animu_db.models.review.Data
 
 class AnimeReviewAdapter : RecyclerView.Adapter<AnimeReviewAdapter.ReviewViewHolder>() {
 

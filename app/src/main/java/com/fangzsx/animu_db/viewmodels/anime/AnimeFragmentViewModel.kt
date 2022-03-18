@@ -13,7 +13,7 @@ class AnimeFragmentViewModel : ViewModel() {
     var animeRecommendations : MutableLiveData<List<Data>> = MutableLiveData()
     val animePopular : MutableLiveData<List<com.fangzsx.animu_db.models.popular.Data>> = MutableLiveData()
     val topCharacters : MutableLiveData<List<com.fangzsx.animu_db.models.topcharacters.Data>> = MutableLiveData()
-    val reviews : MutableLiveData<List<com.fangzsx.animu_db.models.animereview.Data>> = MutableLiveData()
+    val reviews : MutableLiveData<List<com.fangzsx.animu_db.models.review.Data>> = MutableLiveData()
 
 
 

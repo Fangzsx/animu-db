@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.models.animereview
+package com.fangzsx.animu_db.models.review
 
 data class User(
     val images: ImagesX,

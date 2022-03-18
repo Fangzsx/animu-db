@@ -2,7 +2,7 @@ package com.fangzsx.animu_db.api
 
 import com.fangzsx.animu_db.models.anime.AnimeResponse
 import com.fangzsx.animu_db.models.animecharacters.AnimeCharactersResponse
-import com.fangzsx.animu_db.models.animereview.AnimeReviewResponse
+import com.fangzsx.animu_db.models.review.ReviewResponse
 import com.fangzsx.animu_db.models.character.CharacterResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
@@ -45,7 +45,7 @@ interface MALapi {
     ) : Response<CharacterResponse>
 
     @GET("v4/reviews/anime")
-    suspend fun getAnimeReviews() : Response<AnimeReviewResponse>
+    suspend fun getAnimeReviews() : Response<ReviewResponse>
 
     @GET("v4/anime?")
     suspend fun searchAnimeTitlesByQuery(
@@ -59,6 +59,10 @@ interface MALapi {
 
     @GET("v4/top/manga")
     suspend fun getTopManga() : Response<TopMangaResponse>
+
+    @GET("/v4/reviews/manga")
+    suspend fun getMangaReviews() : Response<ReviewResponse>
+
 
 
 }
