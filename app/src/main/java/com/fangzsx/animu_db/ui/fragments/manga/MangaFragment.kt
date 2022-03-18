@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangzsx.animu_db.adapters.ImageSliderAdapter
+import com.fangzsx.animu_db.adapters.MangaReviewAdapter
 import com.fangzsx.animu_db.adapters.PopularMangaAdapter
 import com.fangzsx.animu_db.databinding.FragmentMangaBinding
 import com.fangzsx.animu_db.viewmodels.manga.MangaFragmentViewModel
@@ -20,12 +21,14 @@ class MangaFragment : Fragment() {
     private lateinit var mangaFragmentVM: MangaFragmentViewModel
     private lateinit var imageSliderAdapter : ImageSliderAdapter
     private lateinit var popularMangaAdapter : PopularMangaAdapter
+    private lateinit var mangaRevieAdapter : MangaReviewAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mangaFragmentVM = ViewModelProvider(this).get(MangaFragmentViewModel::class.java)
         popularMangaAdapter = PopularMangaAdapter()
+        mangaRevieAdapter = MangaReviewAdapter()
     }
 
     override fun onCreateView(
@@ -42,8 +45,6 @@ class MangaFragment : Fragment() {
         loadingState()
 
         setUpRecyclerViews()
-
-
 
     }
 
@@ -67,6 +68,20 @@ class MangaFragment : Fragment() {
             setUpPopularRecyclerView()
         }
 
+        mangaFragmentVM.mangaReviews.observe(viewLifecycleOwner){ list ->
+            mangaRevieAdapter.differ.submitList(list)
+            setUpReviewRecyclerView()
+        }
+
+
+
+    }
+
+    private fun setUpReviewRecyclerView() {
+        binding.rvRecentReviewsManga.apply {
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = mangaRevieAdapter
+        }
     }
 
     private fun setUpRecommendationImageSlider() {

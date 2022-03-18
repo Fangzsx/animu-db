@@ -6,5 +6,6 @@ data class Scores(
     val enjoyment: Int,
     val overall: Int,
     val sound: Int,
-    val story: Int
+    val story: Int,
+    val art : Int
 )
