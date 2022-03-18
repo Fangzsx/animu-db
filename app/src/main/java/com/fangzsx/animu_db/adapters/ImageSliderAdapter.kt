@@ -9,7 +9,7 @@ import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.models.recommendation.Entry
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class ImageSliderAdapter(var textView : TextView) : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>() {
+class ImageSliderAdapter() : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(val binding : RecommendationMangaItemBinding) : SliderViewAdapter.ViewHolder(binding.root)
 
@@ -39,7 +39,6 @@ class ImageSliderAdapter(var textView : TextView) : SliderViewAdapter<ImageSlide
 
     override fun onBindViewHolder(viewHolder: ImageViewHolder?, position: Int) {
         val recommended = list[position].entry[0]
-        textView.text = recommended.title
 
         viewHolder?.binding?.apply {
             Glide

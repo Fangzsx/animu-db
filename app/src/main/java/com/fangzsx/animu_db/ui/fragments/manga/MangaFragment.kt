@@ -42,7 +42,7 @@ class MangaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageSliderAdapter = ImageSliderAdapter(binding.tvRecommendationTitle)
+        imageSliderAdapter = ImageSliderAdapter()
         loadingState()
 
         setUpRecyclerViews()
