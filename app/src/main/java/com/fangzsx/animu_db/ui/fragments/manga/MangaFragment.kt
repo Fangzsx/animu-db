@@ -1,7 +1,6 @@
 package com.fangzsx.animu_db.ui.fragments.manga
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,29 +41,35 @@ class MangaFragment : Fragment() {
         imageSliderAdapter = ImageSliderAdapter(binding.tvRecommendationTitle)
         loadingState()
 
-        observeList()
+        setUpRecyclerViews()
 
-        binding.rvPopularMangaNow.apply{
+
+
+    }
+
+    private fun setUpPopularRecyclerView() {
+        binding.rvPopularMangaNow.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = popularMangaAdapter
         }
-
-
     }
 
-    private fun observeList() {
+    private fun setUpRecyclerViews() {
         mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
             imageSliderAdapter.setList(list.subList(0, 10))
+            setUpRecommendationImageSlider()
             successState()
-            setUpRecommendationRecyclerView()
         }
 
+        mangaFragmentVM.getTopManga()
         mangaFragmentVM.topManga.observe(viewLifecycleOwner) { list ->
             popularMangaAdapter.differ.submitList(list)
+            setUpPopularRecyclerView()
         }
+
     }
 
-    private fun setUpRecommendationRecyclerView() {
+    private fun setUpRecommendationImageSlider() {
         binding.isRecommendationsManga.setSliderAdapter(imageSliderAdapter)
         binding.isRecommendationsManga.setIndicatorAnimation(IndicatorAnimationType.WORM)
         binding.isRecommendationsManga.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
