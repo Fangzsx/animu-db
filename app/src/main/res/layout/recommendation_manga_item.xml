@@ -17,7 +17,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_recommendation_manga_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#8000"
+            android:fontFamily="@font/sans"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_22sdp"
+            android:textSize="@dimen/_10sdp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

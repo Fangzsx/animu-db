@@ -63,6 +63,7 @@ class MangaFragment : Fragment() {
             successState()
         }
 
+
         mangaFragmentVM.topManga.observe(viewLifecycleOwner) { list ->
             popularMangaAdapter.differ.submitList(list)
             setUpPopularRecyclerView()
@@ -93,6 +94,7 @@ class MangaFragment : Fragment() {
         imageSliderAdapter.onItemClick = {
             Toast.makeText(activity, "${it.title}", Toast.LENGTH_SHORT).show()
         }
+
     }
 
 

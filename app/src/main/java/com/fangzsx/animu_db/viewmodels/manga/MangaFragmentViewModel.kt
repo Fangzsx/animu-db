@@ -40,7 +40,7 @@ class MangaFragmentViewModel : ViewModel() {
         }
     }
 
-    fun getTopManga() = viewModelScope.launch {
+    private fun getTopManga() = viewModelScope.launch {
         val response = RetrofitInstance.malAPI.getTopManga()
         if(response.isSuccessful){
             response.body()?.let{ topMangaResponse ->

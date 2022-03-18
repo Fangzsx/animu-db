@@ -8,6 +8,7 @@ import com.fangzsx.animu_db.databinding.RecommendationMangaItemBinding
 import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.models.recommendation.Entry
 import com.smarteist.autoimageslider.SliderViewAdapter
+import org.w3c.dom.Text
 
 class ImageSliderAdapter : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>() {
 
@@ -15,8 +16,6 @@ class ImageSliderAdapter : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>
 
     private var list : List<Data> = mutableListOf()
     var onItemClick : ((Entry) -> Unit)? = null
-
-
 
     fun setList(data : List<Data>){
         list = data
@@ -46,12 +45,16 @@ class ImageSliderAdapter : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>
                 .with(viewHolder.itemView)
                 .load(recommended.images.jpg.large_image_url)
                 .into(ivRecommendedSrc)
+
+            tvRecommendationMangaTitle.text = recommended.title
         }
 
 
         viewHolder!!.itemView.setOnClickListener {
             onItemClick?.invoke(recommended)
         }
+
+
     }
 
 
