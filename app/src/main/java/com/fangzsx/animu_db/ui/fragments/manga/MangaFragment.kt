@@ -63,7 +63,6 @@ class MangaFragment : Fragment() {
             successState()
         }
 
-        mangaFragmentVM.getTopManga()
         mangaFragmentVM.topManga.observe(viewLifecycleOwner) { list ->
             popularMangaAdapter.differ.submitList(list)
             setUpPopularRecyclerView()

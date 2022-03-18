@@ -9,12 +9,13 @@ import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.models.recommendation.Entry
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class ImageSliderAdapter() : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>() {
+class ImageSliderAdapter : SliderViewAdapter<ImageSliderAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(val binding : RecommendationMangaItemBinding) : SliderViewAdapter.ViewHolder(binding.root)
 
     private var list : List<Data> = mutableListOf()
     var onItemClick : ((Entry) -> Unit)? = null
+
 
 
     fun setList(data : List<Data>){

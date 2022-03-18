@@ -25,8 +25,10 @@ class MangaFragmentViewModel : ViewModel() {
 
 
     init {
+        getTopManga()
         getMangaReviews()
         getMangaRecommendation()
+
     }
 
     private fun getMangaRecommendation() = viewModelScope.launch {
