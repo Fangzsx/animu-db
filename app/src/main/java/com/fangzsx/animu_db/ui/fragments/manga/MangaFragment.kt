@@ -42,14 +42,12 @@ class MangaFragment : Fragment() {
         imageSliderAdapter = ImageSliderAdapter(binding.tvRecommendationTitle)
         loadingState()
 
-        mangaFragmentVM.getMangaRecommendation()
         mangaFragmentVM.recommendations.observe(viewLifecycleOwner) { list ->
             imageSliderAdapter.setList(list.subList(0,10))
             successState()
             setUpRecommendationRecyclerView()
         }
 
-        mangaFragmentVM.getTopManga()
         mangaFragmentVM.topManga.observe(viewLifecycleOwner){ list ->
 
             Log.i("test", list.size.toString())
