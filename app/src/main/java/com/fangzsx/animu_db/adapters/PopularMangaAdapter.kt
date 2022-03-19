@@ -13,6 +13,8 @@ import com.fangzsx.animu_db.models.topmanga.Data
 
 class PopularMangaAdapter : RecyclerView.Adapter<PopularMangaAdapter.MangaViewHolder>() {
 
+    var onItemClick : ((Data) -> Unit)? = null
+
     inner class MangaViewHolder(val binding : PopularMangaItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Data>(){
@@ -56,6 +58,10 @@ class PopularMangaAdapter : RecyclerView.Adapter<PopularMangaAdapter.MangaViewHo
 
             tvPopularMangaTitle.text = manga.title
             tvPopularRank.text = "${position + 1}"
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(manga)
         }
     }
 

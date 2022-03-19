@@ -58,6 +58,13 @@ class MangaFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = popularMangaAdapter
         }
+
+        popularMangaAdapter.onItemClick = { mangaData ->
+            Intent(activity, MangaActivity::class.java).apply {
+                putExtra("MAL_ID", mangaData.mal_id)
+                startActivity(this)
+            }
+        }
     }
 
     private fun setUpRecyclerViews() {

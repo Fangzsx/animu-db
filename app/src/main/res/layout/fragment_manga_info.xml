@@ -6,6 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.manga.MangaInfoFragment">
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:indicatorColor="@color/blue"
+        android:visibility="gone"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -33,6 +44,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sans"
                 android:textSize="@dimen/_12sdp"
+                android:ellipsize="marquee"
+                android:maxLength="35"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="@id/tv_original_title_manga_label"
                 app:layout_constraintStart_toEndOf="@id/tv_original_title_manga_label"/>
