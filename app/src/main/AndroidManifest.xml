@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Animudb">
         <activity
+            android:name=".ui.activities.MangaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.SearchActivity"
             android:exported="false" />
         <activity

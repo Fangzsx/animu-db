@@ -69,7 +69,6 @@ class AnimeFragment : Fragment() {
                 startActivity(it)
             }
         }
-
     }
 
 

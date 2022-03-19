@@ -124,6 +124,17 @@
                 android:layout_marginTop="@dimen/_30sdp"
                 app:layout_constraintTop_toBottomOf="@id/rv_popular_manga_now"
                 app:layout_constraintStart_toStartOf="@id/rv_popular_manga_now"/>
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/pg_recent_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_recent_reviews_manga"
+                android:indeterminate="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                app:indicatorColor="@color/blue"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recent_reviews_manga"

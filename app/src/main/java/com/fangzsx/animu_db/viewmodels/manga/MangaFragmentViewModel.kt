@@ -26,7 +26,6 @@ class MangaFragmentViewModel : ViewModel() {
 
     init {
         getTopManga()
-        getMangaReviews()
         getMangaRecommendation()
 
     }
@@ -49,7 +48,7 @@ class MangaFragmentViewModel : ViewModel() {
         }
     }
 
-    private fun getMangaReviews() = viewModelScope.launch {
+    fun getMangaReviews() = viewModelScope.launch {
         val response = RetrofitInstance.malAPI.getMangaReviews()
         if(response.isSuccessful){
             response.body()?.let { reviewResponse ->
