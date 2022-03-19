@@ -80,7 +80,7 @@ class MangaFragment : Fragment() {
                 setUpReviewRecyclerView()
                 reviewsSuccessState()
             }
-        },1000)
+        },2000)
 
     }
 
