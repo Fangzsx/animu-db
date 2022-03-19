@@ -1,14 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.manga.MangaInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp">
 
-</FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_original_title_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Original Title:"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_original_title_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_original_title_manga_label"
+                app:layout_constraintStart_toEndOf="@id/tv_original_title_manga_label"/>
+            <TextView
+                android:id="@+id/tv_english_title_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="English Title:"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_original_title_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_original_title_manga_label"/>
+            <TextView
+                android:id="@+id/tv_english_title_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_english_title_manga_label"
+                app:layout_constraintStart_toEndOf="@id/tv_english_title_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_japanese_title_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Japanese Title:"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_english_title_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_english_title_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_japanese_title_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_japanese_title_manga_label"
+                app:layout_constraintStart_toEndOf="@id/tv_japanese_title_manga_label"/>
+            <TextView
+                android:id="@+id/tv_chapters_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Chapters:"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_japanese_title_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_japanese_title_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_chapters_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/tv_chapters_manga_label"
+                app:layout_constraintTop_toTopOf="@id/tv_chapters_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_status_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Status:"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_chapters_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_chapters_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_status_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_status_manga_label"
+                app:layout_constraintStart_toEndOf="@id/tv_status_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_authors_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Author(s):"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_status_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_status_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_authors_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:maxLength="35"
+                android:ellipsize="marquee"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_authors_manga_label"
+                app:layout_constraintStart_toEndOf="@id/tv_authors_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_published_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Published:"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_authors_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_authors_manga_label"/>
+
+            <TextView
+                android:id="@+id/tv_published_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="@id/tv_published_manga_label"
+                app:layout_constraintStart_toEndOf="@id/tv_published_manga_label"/>
+
+            <ImageView
+                android:id="@+id/iv_rating"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_published_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_published_manga_label"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/rating"
+                app:tint="@color/blue" />
+
+            <TextView
+                android:id="@+id/tv_rating_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/iv_rating"
+                app:layout_constraintTop_toTopOf="@id/iv_rating"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Rating"/>
+
+            <TextView
+                android:id="@+id/tv_manga_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_rating_manga_label"
+                app:layout_constraintStart_toStartOf="@id/tv_rating_manga_label"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/tv_manga_scored_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_manga_score"
+                app:layout_constraintTop_toBottomOf="@id/tv_manga_score"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"/>
+            <TextView
+                android:id="@+id/tv_manga_popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="@id/tv_manga_scored_by"
+                app:layout_constraintTop_toBottomOf="@id/tv_manga_scored_by"/>
+            <TextView
+                android:id="@+id/tv_manga_ranking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_manga_popularity"
+                app:layout_constraintStart_toStartOf="@id/tv_manga_popularity"/>
+
+            <TextView
+                android:id="@+id/tv_synopsis_manga_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Synopsis:"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/iv_rating"
+                app:layout_constraintStart_toStartOf="@id/iv_rating"/>
+
+            <TextView
+                android:id="@+id/tv_synopsis_manga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_synopsis_manga_label"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/sans"
+                android:textSize="@dimen/_12sdp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

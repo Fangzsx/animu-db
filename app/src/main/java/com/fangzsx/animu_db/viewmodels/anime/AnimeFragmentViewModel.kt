@@ -28,7 +28,7 @@ class AnimeFragmentViewModel : ViewModel() {
         val response = RetrofitInstance.malAPI.getAnimeRecommendation()
         if(response.isSuccessful){
             response.body()?.let{ list->
-                animeRecommendations.postValue(list.data.subList(0,10))
+                animeRecommendations.postValue(list.data)
 
             }
         }
