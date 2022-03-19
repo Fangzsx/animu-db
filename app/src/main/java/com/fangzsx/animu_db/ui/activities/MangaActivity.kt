@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.fangzsx.animu_db.adapters.vp.MangaViewPagerAdapter
 import com.fangzsx.animu_db.databinding.ActivityMangaBinding
 import com.fangzsx.animu_db.viewmodels.manga.MangaActivityViewModel
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.Job
 
 class MangaActivity : AppCompatActivity() {
@@ -21,6 +23,7 @@ class MangaActivity : AppCompatActivity() {
 
 
         val id = intent.getIntExtra("MAL_ID", 0)
+        setUpTabLayout()
         mangaActivityVM.getMangaByID(id)
 
         mangaActivityVM.manga.observe(this){ data ->
@@ -36,6 +39,22 @@ class MangaActivity : AppCompatActivity() {
             .with(this@MangaActivity)
             .load(imageURL)
             .into(binding.ivManga)
+    }
+
+    private fun setUpTabLayout(){
+        val adapter = MangaViewPagerAdapter(supportFragmentManager, lifecycle)
+        binding.vpManga.adapter = adapter
+
+        TabLayoutMediator(binding.tlInfoChars, binding.vpManga){ tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "INFO"
+                }
+                1 -> {
+                    tab.text = "CHARACTERS"
+                }
+            }
+        }.attach()
     }
 
 
