@@ -84,9 +84,12 @@ class SearchActivity : AppCompatActivity() {
             adapter = searchResultAdapter
         }
 
-        searchResultAdapter.onItemClick = { data ->
+        searchResultAdapter.onItemClick = { animeSearchedData ->
             Intent(this@SearchActivity, AnimeActivity::class.java).apply {
-                putExtra("MAL_ID", data.mal_id)
+                putExtra("MAL_ID", animeSearchedData.mal_id)
+                putExtra("ANIME_IMAGE_URL", animeSearchedData.images.jpg.large_image_url)
+                putExtra("ANIME_TITLE", animeSearchedData.title)
+                
                 startActivity(this)
             }
         }
