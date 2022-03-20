@@ -37,6 +37,11 @@ class InfoFragment : Fragment(){
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.vvTrailer.release()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

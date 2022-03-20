@@ -120,9 +120,6 @@ class AnimeFragment : Fragment() {
                 putExtra("MAL_ID", animeData.mal_id)
                 putExtra("ANIME_TITLE", animeData.title)
                 putExtra("ANIME_IMAGE_URL",animeData.images.jpg.large_image_url)
-
-
-
                 startActivity(this)
             }
         }
