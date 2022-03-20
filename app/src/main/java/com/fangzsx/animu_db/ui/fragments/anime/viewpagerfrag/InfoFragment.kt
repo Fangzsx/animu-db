@@ -161,6 +161,4 @@ class InfoFragment : Fragment(){
             tvSynopsis.visibility = View.INVISIBLE
         }
     }
-
-
 }
