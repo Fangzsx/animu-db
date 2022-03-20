@@ -25,8 +25,6 @@ class AnimeActivity : AppCompatActivity() {
         animeVM = ViewModelProvider(this).get(AnimeActivityViewModel::class.java)
 
 
-
-
         val animeIMG = intent.getStringExtra("ANIME_IMAGE_URL")
         val animeTitle = intent.getStringExtra("ANIME_TITLE")
         setAnimeImageAndTitle(animeIMG,animeTitle)

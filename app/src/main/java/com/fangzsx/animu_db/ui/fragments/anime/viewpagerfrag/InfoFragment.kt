@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.ui.fragments.anime.viewpagerfrag
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,51 +48,113 @@ class InfoFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val origTitle = requireActivity().intent.getStringExtra("ANIME_TITLE")
-        val engTitle = requireActivity().intent.getStringExtra("ANIME_TITLE_ENG")
-        val japTitle = requireActivity().intent.getStringExtra("ANIME_TITLE_JAP")
-        val episodes = requireActivity().intent.getIntExtra("ANIME_EPISODES",0)
-        val status = requireActivity().intent.getStringExtra("ANIME_STATUS")
-        val aired = requireActivity().intent.getStringExtra("ANIME_AIRED")
-        val rating = requireActivity().intent.getStringExtra("ANIME_RATING")
-        val score = requireActivity().intent.getDoubleExtra("ANIME_SCORE",0.0)
-        val synopsis = requireActivity().intent.getStringExtra("ANIME_SYNOPSIS")
-        val youtubeID = requireActivity().intent.getStringExtra("ANIME_TRAILER_YT_ID")
+        loadingState()
+        val id = requireActivity().intent.getIntExtra("MAL_ID",0)
+        if(id != 0){ //meaning the id exist
+            animeInfoVM.getAnimeById(id)
+            animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
+
+                bindDataToView(animeData)
+                successState()
+            }
+        }else{
+            Log.e("CHAR_INFO_FRAGMENT", "An error occurred.")
+        }
+    }
+
+    private fun bindDataToView(animeData: Data) {
+        binding.apply {
+            tvOriginalTitle.text = animeData.title
+            tvEnglishTitle.text = animeData.title_english
+            tvJapaneseTitle.text = animeData.title_japanese
+            tvEpisodes.text = animeData.episodes.toString()
+            tvStatus.text = animeData.status
+            tvAired.text = extractDate(animeData)
+            tvRating.text = animeData.rating
+            tvScore.text = animeData.score.toString()
+            tvSynopsis.text = animeData.synopsis
+
+            if (animeData.trailer.youtube_id != null) {
+                playTrailer(animeData.trailer.youtube_id)
+            } else {
+                Toast.makeText(activity, "Trailer not available.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
+
+
+    private fun playTrailer(youtubeID: String) {
+        val youTubePlayerView: YouTubePlayerView = binding.vvTrailer
+        viewLifecycleOwner.lifecycle.addObserver(youTubePlayerView)
+        youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
+            override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
+            }
+        })
+    }
+
+    private fun extractDate(data : Data) : String{
+        val fromMonth = data.aired.prop.from.month
+        val fromDay = data.aired.prop.from.day
+        val fromYear = data.aired.prop.from.year
+
+        val toMonth = data.aired.prop.to.month
+        val toDay = data.aired.prop.to.day
+        val toYear = data.aired.prop.to.year
+
+        return "From $fromYear-$fromMonth-$fromDay To $toYear-$toMonth-$toDay"
+    }
+
+    private fun successState() {
 
         binding.apply {
-            tvOriginalTitle.text = origTitle
-            tvEnglishTitle.text = engTitle
-            tvJapaneseTitle.text = japTitle
-            tvEpisodes.text = episodes.toString()
-            tvStatus.text = status
-            tvAired.text = aired
-            tvRating.text = rating
-            tvScore.text = score.toString()
-            tvSynopsis.text = synopsis
-
-            playTrailer(youtubeID)
+            progressBar.visibility = View.INVISIBLE
+            vvTrailer.visibility = View.VISIBLE
+            tvJapaneseTitle.visibility = View.VISIBLE
+            tvJapaneseTitleLabel.visibility = View.VISIBLE
+            tvEnglishTitle.visibility = View.VISIBLE
+            tvEnglishTitleLabel.visibility = View.VISIBLE
+            tvOriginalTitle.visibility = View.VISIBLE
+            tvOriginalTitleLabel.visibility = View.VISIBLE
+            tvEpisodesLabel.visibility = View.VISIBLE
+            tvEpisodes.visibility = View.VISIBLE
+            tvStatusLabel.visibility = View.VISIBLE
+            tvStatus.visibility = View.VISIBLE
+            tvAiredLabel.visibility = View.VISIBLE
+            tvAired.visibility = View.VISIBLE
+            tvRatingLabel.visibility = View.VISIBLE
+            tvRating.visibility = View.VISIBLE
+            tvScoreLabel.visibility = View.VISIBLE
+            tvScore.visibility = View.VISIBLE
+            tvSynopsisLabel.visibility = View.VISIBLE
+            tvSynopsis.visibility = View.VISIBLE
+        }
+    }
+    private fun loadingState() {
+        binding.apply {
+            vvTrailer.visibility = View.INVISIBLE
+            progressBar.visibility = View.VISIBLE
+            tvJapaneseTitle.visibility = View.INVISIBLE
+            tvJapaneseTitleLabel.visibility = View.INVISIBLE
+            tvEnglishTitle.visibility = View.INVISIBLE
+            tvEnglishTitleLabel.visibility = View.INVISIBLE
+            tvOriginalTitle.visibility = View.INVISIBLE
+            tvOriginalTitleLabel.visibility = View.INVISIBLE
+            tvEpisodesLabel.visibility = View.INVISIBLE
+            tvEpisodes.visibility = View.INVISIBLE
+            tvStatusLabel.visibility = View.INVISIBLE
+            tvStatus.visibility = View.INVISIBLE
+            tvAiredLabel.visibility = View.INVISIBLE
+            tvAired.visibility = View.INVISIBLE
+            tvRatingLabel.visibility = View.INVISIBLE
+            tvRating.visibility = View.INVISIBLE
+            tvScoreLabel.visibility = View.INVISIBLE
+            tvScore.visibility = View.INVISIBLE
+            tvSynopsisLabel.visibility = View.INVISIBLE
+            tvSynopsis.visibility = View.INVISIBLE
         }
     }
 
-
-
-
-    private fun playTrailer(youtubeID: String?) {
-        val youTubePlayerView: YouTubePlayerView = binding.vvTrailer
-        lifecycle.addObserver(youTubePlayerView)
-
-        if(youtubeID != null){
-            youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
-                override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
-
-                    youtubeID?.let {
-                        youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
-                    }
-                }
-            })
-        }else{
-            Toast.makeText(activity, "Trailer not available.", Toast.LENGTH_SHORT).show()
-        }
-    }
 
 }

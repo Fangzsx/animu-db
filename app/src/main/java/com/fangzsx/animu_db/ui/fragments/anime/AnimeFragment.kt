@@ -119,17 +119,8 @@ class AnimeFragment : Fragment() {
             Intent(activity, AnimeActivity::class.java).apply {
                 putExtra("MAL_ID", animeData.mal_id)
                 putExtra("ANIME_TITLE", animeData.title)
-                putExtra("ANIME_TITLE_ENG", animeData.title_english)
-                putExtra("ANIME_TITLE_JAP", animeData.title_japanese)
-                putExtra("ANIME_EPISODES", animeData.episodes)
-                putExtra("ANIME_STATUS", animeData.status)
-                val aired = extractDate(animeData)
-                putExtra("ANIME_AIRED", aired)
-                putExtra("ANIME_RATING", animeData.rating)
-                putExtra("ANIME_SCORE", animeData.score)
-                putExtra("ANIME_SYNOPSIS", animeData.synopsis)
                 putExtra("ANIME_IMAGE_URL",animeData.images.jpg.large_image_url)
-                putExtra("ANIME_TRAILER_YT_ID", animeData.trailer.youtube_id)
+
 
 
                 startActivity(this)
