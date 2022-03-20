@@ -14,11 +14,18 @@ class AnimeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityAnimeBinding
     private lateinit var animeVM : AnimeActivityViewModel
 
+    override fun onBackPressed() {
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         animeVM = ViewModelProvider(this).get(AnimeActivityViewModel::class.java)
+
+
+
 
         val animeIMG = intent.getStringExtra("ANIME_IMAGE_URL")
         val animeTitle = intent.getStringExtra("ANIME_TITLE")

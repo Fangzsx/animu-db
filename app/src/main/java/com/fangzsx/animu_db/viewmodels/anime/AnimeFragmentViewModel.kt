@@ -1,5 +1,6 @@
 package com.fangzsx.animu_db.viewmodels.anime
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,6 +15,9 @@ class AnimeFragmentViewModel : ViewModel() {
     val animePopular : MutableLiveData<List<com.fangzsx.animu_db.models.popular.Data>> = MutableLiveData()
     val topCharacters : MutableLiveData<List<com.fangzsx.animu_db.models.topcharacters.Data>> = MutableLiveData()
     val reviews : MutableLiveData<List<com.fangzsx.animu_db.models.review.Data>> = MutableLiveData()
+
+    private val _anime : MutableLiveData<com.fangzsx.animu_db.models.anime.Data> = MutableLiveData()
+    val anime : LiveData<com.fangzsx.animu_db.models.anime.Data> = _anime
 
 
 
@@ -30,6 +34,15 @@ class AnimeFragmentViewModel : ViewModel() {
             response.body()?.let{ list->
                 animeRecommendations.postValue(list.data)
 
+            }
+        }
+    }
+
+    fun getAnimeByID(id : Int) = viewModelScope.launch {
+        val response = RetrofitInstance.malAPI.getAnimeByID(id)
+        if(response.isSuccessful){
+            response.body()?.let { animeResponse ->
+               _anime.postValue(animeResponse.data)
             }
         }
     }

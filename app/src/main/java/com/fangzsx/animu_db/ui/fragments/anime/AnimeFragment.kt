@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.CursorAdapter
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -97,10 +98,14 @@ class AnimeFragment : Fragment() {
         }
 
         recommendationsAdapter.onItemClick = { entry ->
+
             Intent(activity, AnimeActivity::class.java).apply {
                 putExtra("MAL_ID", entry.mal_id)
+                putExtra("ANIME_IMAGE_URL", entry.images.jpg.large_image_url)
+                putExtra("ANIME_TITLE", entry.title)
                 startActivity(this)
             }
+
         }
     }
 

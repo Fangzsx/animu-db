@@ -56,6 +56,7 @@ class AnimeCharactersAdapter : RecyclerView.Adapter<AnimeCharactersAdapter.Chara
         }
 
         holder.itemView.setOnClickListener {
+
             onItemClick?.invoke(character)
         }
     }

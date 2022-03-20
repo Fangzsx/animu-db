@@ -18,7 +18,7 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.Anime
 
     private val differCallback = object : DiffUtil.ItemCallback<Data>(){
         override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
-            return oldItem.entry == newItem.entry
+            return oldItem.mal_id == newItem.mal_id
         }
 
         override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
@@ -32,6 +32,7 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.Anime
 
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         val data = differ.currentList[position]
+
 
         //retrieve only the first data entry since the other data is duplicate only
         val recommendation = data.entry[0]
