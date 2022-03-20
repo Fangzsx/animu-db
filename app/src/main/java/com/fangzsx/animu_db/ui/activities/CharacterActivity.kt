@@ -19,35 +19,27 @@ class CharacterActivity : AppCompatActivity() {
         characterVM = ViewModelProvider(this).get(CharacterActivityViewModel::class.java)
         setContentView(binding.root)
 
+
         loadingState()
-        val id = intent.getIntExtra("CHAR_ID", 0)
+        val fullname = intent.getStringExtra("CHAR_FULL_NAME")
+        val kanjiname = intent.getStringExtra("CHAR_KANJI_NAME")
+        val nicknames = intent.getStringExtra("CHAR_NICK_NAMES")
+        val about = intent.getStringExtra("CHAR_ABOUT")
+        val imageURL = intent.getStringExtra("CHAR_IMAGE_URL")
 
-        characterVM.getCharacterByID(id)
+        binding.apply {
+            tvFullname.text = fullname
+            tvFullnameKanji.text = kanjiname
+            tvNicknames.text = nicknames
+            tvAbout.text = about
 
-        characterVM.character.observe(this){ charData ->
-
-            charData?.let { data ->
-
-                binding.apply {
-                    clToolbar.title = data.name
-                    Glide
-                        .with(this@CharacterActivity)
-                        .load(data.images.jpg.image_url)
-                        .into(ivCharImage)
-
-                    tvFullname.text = data.name
-                    tvFullnameKanji.text = data.name_kanji
-                    tvNicknames.text = data.nicknames.toString()
-                    if(data.about == null){
-                        tvAbout.text = "No Information"
-                    }else{
-                        tvAbout.text = data.about
-                    }
-
-                }
-                successState()
-            }
+            Glide
+                .with(this@CharacterActivity)
+                .load(imageURL)
+                .into(ivCharImage)
         }
+        successState()
+
 
 
     }

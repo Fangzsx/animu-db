@@ -20,25 +20,24 @@ class AnimeActivity : AppCompatActivity() {
         setContentView(binding.root)
         animeVM = ViewModelProvider(this).get(AnimeActivityViewModel::class.java)
 
-        val animeID = intent.getIntExtra("MAL_ID", 0)
-        setAnimeImage(animeID)
+        val animeIMG = intent.getStringExtra("ANIME_IMAGE_URL")
+        val animeTitle = intent.getStringExtra("ANIME_TITLE")
+        setAnimeImageAndTitle(animeIMG,animeTitle)
 
         setUpTabLayout()
 
     }
 
-    private fun setAnimeImage(id : Int){
-        animeVM.getAnimeById(id)
-        animeVM.anime.observe(this){ animeData ->
+    private fun setAnimeImageAndTitle(url : String?, animeTitle: String?){
             Glide
                 .with(this)
-                .load(animeData.images.webp.large_image_url)
+                .load(url)
                 .into(binding.ivAnime)
 
-            binding.clToolbar.title = animeData.title
-        }
-
+            binding.clToolbar.title = animeTitle
     }
+
+
 
     private fun setUpTabLayout() {
         val adapter = AnimeViewPagerAdapter(supportFragmentManager, lifecycle)

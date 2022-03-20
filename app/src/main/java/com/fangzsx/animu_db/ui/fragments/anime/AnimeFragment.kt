@@ -20,6 +20,7 @@ import com.fangzsx.animu_db.adapters.PopularAnimeAdapter
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.adapters.TopCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
+import com.fangzsx.animu_db.models.anime.Data
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.ui.activities.ReviewActivity
@@ -76,7 +77,7 @@ class AnimeFragment : Fragment() {
     private fun loadTopCharactersAfter4Seconds() {
         Handler().postDelayed({
             animeFragmentVM.getTopCharacters()
-            animeFragmentVM.topCharacters.observe(requireParentFragment().viewLifecycleOwner) { list ->
+            animeFragmentVM.topCharacters.observe(viewLifecycleOwner) { list ->
                 topCharacterAdapter.differ.submitList(list)
             }
             hideProgressBar()
@@ -109,13 +110,39 @@ class AnimeFragment : Fragment() {
             adapter = popularAdapter
         }
 
-        popularAdapter.onItemClick = { data ->
+        popularAdapter.onItemClick = { animeData ->
             Intent(activity, AnimeActivity::class.java).apply {
-                putExtra("MAL_ID", data.mal_id)
+                putExtra("MAL_ID", animeData.mal_id)
+                putExtra("ANIME_TITLE", animeData.title)
+                putExtra("ANIME_TITLE_ENG", animeData.title_english)
+                putExtra("ANIME_TITLE_JAP", animeData.title_japanese)
+                putExtra("ANIME_EPISODES", animeData.episodes)
+                putExtra("ANIME_STATUS", animeData.status)
+                val aired = extractDate(animeData)
+                putExtra("ANIME_AIRED", aired)
+                putExtra("ANIME_RATING", animeData.rating)
+                putExtra("ANIME_SCORE", animeData.score)
+                putExtra("ANIME_SYNOPSIS", animeData.synopsis)
+                putExtra("ANIME_IMAGE_URL",animeData.images.jpg.large_image_url)
+                putExtra("ANIME_TRAILER_YT_ID", animeData.trailer.youtube_id)
+
+
                 startActivity(this)
             }
         }
 
+    }
+
+    private fun extractDate(data : com.fangzsx.animu_db.models.popular.Data) : String{
+        val fromMonth = data.aired.prop.from.month
+        val fromDay = data.aired.prop.from.day
+        val fromYear = data.aired.prop.from.year
+
+        val toMonth = data.aired.prop.to.month
+        val toDay = data.aired.prop.to.day
+        val toYear = data.aired.prop.to.year
+
+        return "From $fromYear-$fromMonth-$fromDay To $toYear-$toMonth-$toDay"
     }
 
     private fun setUpTopCharactersRecyclerView(){
@@ -126,9 +153,13 @@ class AnimeFragment : Fragment() {
         }
         topCharacterAdapter.onItemClick = { charData ->
 
-
             Intent(activity, CharacterActivity::class.java).apply {
-                putExtra("CHAR_ID", charData.mal_id)
+                putExtra("CHAR_FULL_NAME", charData.name)
+                putExtra("CHAR_KANJI_NAME", charData.name_kanji)
+                putExtra("CHAR_NICK_NAMES", charData.nicknames.toString())
+                putExtra("CHAR_ABOUT", charData.about)
+                putExtra("CHAR_IMAGE_URL", charData.images.jpg.image_url)
+
                 startActivity(this)
             }
         }

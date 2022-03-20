@@ -81,6 +81,7 @@ class MangaInfoFragment : Fragment() {
             tvMangaScore.visibility = View.INVISIBLE
             tvMangaScoredBy.visibility = View.INVISIBLE
             tvMangaPopularity.visibility = View.INVISIBLE
+            ivRating.visibility = View.INVISIBLE
             tvMangaRanking.visibility = View.INVISIBLE
             tvSynopsisMangaLabel.visibility = View.INVISIBLE
 
@@ -101,6 +102,7 @@ class MangaInfoFragment : Fragment() {
             tvPublishedMangaLabel.visibility = View.VISIBLE
             tvRatingMangaLabel.visibility = View.VISIBLE
             tvMangaScore.visibility = View.VISIBLE
+            ivRating.visibility = View.VISIBLE
             tvMangaScoredBy.visibility = View.VISIBLE
             tvMangaPopularity.visibility = View.VISIBLE
             tvMangaRanking.visibility = View.VISIBLE
