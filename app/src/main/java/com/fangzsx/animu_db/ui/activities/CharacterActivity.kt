@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.ActivityCharacterBinding
@@ -13,6 +16,10 @@ class CharacterActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCharacterBinding
     private lateinit var characterVM : CharacterActivityViewModel
 
+    override fun onBackPressed() {
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCharacterBinding.inflate(layoutInflater)
@@ -21,27 +28,38 @@ class CharacterActivity : AppCompatActivity() {
 
 
         loadingState()
-        val fullname = intent.getStringExtra("CHAR_FULL_NAME")
-        val kanjiname = intent.getStringExtra("CHAR_KANJI_NAME")
-        val nicknames = intent.getStringExtra("CHAR_NICK_NAMES")
-        val about = intent.getStringExtra("CHAR_ABOUT")
-        val imageURL = intent.getStringExtra("CHAR_IMAGE_URL")
+        val charID = intent.getIntExtra("CHAR_ID", 0)
 
-        binding.apply {
-            tvFullname.text = fullname
-            tvFullnameKanji.text = kanjiname
-            tvNicknames.text = nicknames
-            tvAbout.text = about
+        characterVM.getCharacterByID(charID)
+        characterVM.character.observeOnce(this) { charData ->
 
-            Glide
-                .with(this@CharacterActivity)
-                .load(imageURL)
-                .into(ivCharImage)
+            charData?.let {
+                binding.apply {
+
+                    clToolbar.title = charData.name
+
+                    Glide
+                        .with(this@CharacterActivity)
+                        .load(charData.images.jpg.image_url)
+                        .into(ivCharImage)
+                    tvFullname.text = charData.name
+                    tvFullnameKanji.text = charData.name_kanji
+                    tvNicknames.text = charData.nicknames.toString()
+                    tvAbout.text = charData.about
+
+                }
+                successState()
+            }
         }
-        successState()
 
-
-
+    }
+    fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+        observe(lifecycleOwner, object : Observer<T> {
+            override fun onChanged(t: T?) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        })
     }
 
     private fun successState() {

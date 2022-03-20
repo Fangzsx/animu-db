@@ -147,12 +147,7 @@ class AnimeFragment : Fragment() {
         topCharacterAdapter.onItemClick = { charData ->
 
             Intent(activity, CharacterActivity::class.java).apply {
-                putExtra("CHAR_FULL_NAME", charData.name)
-                putExtra("CHAR_KANJI_NAME", charData.name_kanji)
-                putExtra("CHAR_NICK_NAMES", charData.nicknames.toString())
-                putExtra("CHAR_ABOUT", charData.about)
-                putExtra("CHAR_IMAGE_URL", charData.images.jpg.image_url)
-
+                putExtra("CHAR_ID", charData.mal_id)
                 startActivity(this)
             }
         }

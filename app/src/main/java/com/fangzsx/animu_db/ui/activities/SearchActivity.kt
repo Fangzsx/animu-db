@@ -89,7 +89,7 @@ class SearchActivity : AppCompatActivity() {
                 putExtra("MAL_ID", animeSearchedData.mal_id)
                 putExtra("ANIME_IMAGE_URL", animeSearchedData.images.jpg.large_image_url)
                 putExtra("ANIME_TITLE", animeSearchedData.title)
-                
+
                 startActivity(this)
             }
         }
