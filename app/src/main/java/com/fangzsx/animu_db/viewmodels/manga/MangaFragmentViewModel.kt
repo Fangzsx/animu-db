@@ -27,6 +27,7 @@ class MangaFragmentViewModel : ViewModel() {
     init {
         getTopManga()
         getMangaRecommendation()
+        getMangaReviews()
 
     }
 

@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.ui.fragments.manga
+package com.fangzsx.animu_db.ui.fragments.manga.viewpagerfrag
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.databinding.FragmentMangaInfoBinding
 import com.fangzsx.animu_db.viewmodels.anime.MangaInfoFragmentViewModel
 import java.lang.StringBuilder

@@ -78,7 +78,7 @@ class AnimeFragment : Fragment() {
     private fun loadTopCharactersAfter4Seconds() {
         Handler().postDelayed({
             animeFragmentVM.getTopCharacters()
-            animeFragmentVM.topCharacters.observe(viewLifecycleOwner) { list ->
+            animeFragmentVM.topCharacters.observe(requireParentFragment().viewLifecycleOwner) { list ->
                 topCharacterAdapter.differ.submitList(list)
             }
             hideProgressBar()
@@ -124,18 +124,6 @@ class AnimeFragment : Fragment() {
             }
         }
 
-    }
-
-    private fun extractDate(data : com.fangzsx.animu_db.models.popular.Data) : String{
-        val fromMonth = data.aired.prop.from.month
-        val fromDay = data.aired.prop.from.day
-        val fromYear = data.aired.prop.from.year
-
-        val toMonth = data.aired.prop.to.month
-        val toDay = data.aired.prop.to.day
-        val toYear = data.aired.prop.to.year
-
-        return "From $fromYear-$fromMonth-$fromDay To $toYear-$toMonth-$toDay"
     }
 
     private fun setUpTopCharactersRecyclerView(){

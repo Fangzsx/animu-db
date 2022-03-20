@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.ui.fragments.manga
+package com.fangzsx.animu_db.ui.fragments.manga.viewpagerfrag
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
