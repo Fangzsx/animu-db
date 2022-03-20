@@ -92,6 +92,7 @@ class InfoFragment : Fragment(){
     private fun playTrailer(youtubeID: String) {
         val youTubePlayerView: YouTubePlayerView = binding.vvTrailer
         viewLifecycleOwner.lifecycle.addObserver(youTubePlayerView)
+        
         youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
             override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
                 youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
