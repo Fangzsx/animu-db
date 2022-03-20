@@ -95,7 +95,7 @@ class InfoFragment : Fragment(){
 
         youTubePlayerView.getYouTubePlayerWhenReady(object : YouTubePlayerCallback{
             override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadOrCueVideo(lifecycle, youtubeID, 0f)
+                youTubePlayer.cueVideo(youtubeID, 0f)
             }
         })
     }

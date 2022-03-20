@@ -15,7 +15,7 @@ class AnimeCharacterFragmentViewModel : ViewModel() {
         val response = RetrofitInstance.malAPI.getCharactersByAnimeID(id)
         if(response.isSuccessful){
             response.body()?.let { charactersResponse ->
-                characters.postValue(charactersResponse.data)
+                characters.postValue(charactersResponse.data.filter { it.role.lowercase() == "main" })
             }
         }
     }

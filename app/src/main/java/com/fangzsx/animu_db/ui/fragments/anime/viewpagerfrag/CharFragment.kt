@@ -45,7 +45,7 @@ class CharFragment : Fragment() {
         animeCharVM.getCharactersByAnimeID(id)
         animeCharVM.characters.observe(viewLifecycleOwner){ characterList ->
 
-            charactersAdapter.differ.submitList(characterList.filter { it!!.role.lowercase() == "main" })
+            charactersAdapter.differ.submitList(characterList)
         }
 
         binding.rvCharacters.apply{
