@@ -33,7 +33,7 @@ class CharFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCharBinding.inflate(layoutInflater, container, false)
+        binding = FragmentCharBinding.inflate(inflater, container, false)
         return binding.root
     }
 

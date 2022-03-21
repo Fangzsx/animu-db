@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.fangzsx.animu_db.databinding.FragmentMangaInfoBinding
-import com.fangzsx.animu_db.viewmodels.anime.MangaInfoFragmentViewModel
+import com.fangzsx.animu_db.viewmodels.manga.MangaInfoFragmentViewModel
 import java.lang.StringBuilder
 
 
@@ -26,7 +26,7 @@ class MangaInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMangaInfoBinding.inflate(layoutInflater, container, false)
+        binding = FragmentMangaInfoBinding.inflate(inflater, container, false)
         return binding.root
 
 

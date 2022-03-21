@@ -1,4 +1,4 @@
-package com.fangzsx.animu_db.viewmodels.anime
+package com.fangzsx.animu_db.viewmodels.manga
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

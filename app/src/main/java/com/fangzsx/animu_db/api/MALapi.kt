@@ -70,6 +70,10 @@ interface MALapi {
         id : Int
     ) : Response<MangaResponse>
 
+    @GET("/v4/manga/{id}/characters")
+    suspend fun getMangaCharactersByID(
+        @Path("id") id : Int
+    ) : Response<AnimeCharactersResponse>
 
 
 }

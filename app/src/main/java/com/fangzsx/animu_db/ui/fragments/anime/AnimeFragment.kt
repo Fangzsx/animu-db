@@ -53,7 +53,7 @@ class AnimeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAnimeBinding.inflate(layoutInflater, container, false)
+        binding = FragmentAnimeBinding.inflate(inflater, container, false)
         return binding.root
     }
 

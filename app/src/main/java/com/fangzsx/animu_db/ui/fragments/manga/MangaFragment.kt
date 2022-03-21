@@ -16,6 +16,8 @@ import com.fangzsx.animu_db.adapters.MangaReviewAdapter
 import com.fangzsx.animu_db.adapters.PopularMangaAdapter
 import com.fangzsx.animu_db.databinding.FragmentMangaBinding
 import com.fangzsx.animu_db.ui.activities.MangaActivity
+import com.fangzsx.animu_db.ui.activities.MangaReviewActivity
+import com.fangzsx.animu_db.ui.activities.ReviewActivity
 import com.fangzsx.animu_db.viewmodels.manga.MangaFragmentViewModel
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
@@ -42,7 +44,7 @@ class MangaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMangaBinding.inflate(layoutInflater, container, false)
+        binding = FragmentMangaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -96,8 +98,21 @@ class MangaFragment : Fragment() {
             adapter = mangaReviewAdapter
         }
 
-        mangaReviewAdapter.onItemClick = {
-            Intent()
+        mangaReviewAdapter.onItemClick = { review ->
+            Intent(activity, MangaReviewActivity::class.java).apply {
+                putExtra("IMAGE_URL", review.entry.images.jpg.image_url)
+                putExtra("ANIME_REVIEW_TITLE", review.entry.title)
+                putExtra("REVIEW_BY", review.user.username)
+                putExtra("REVIEW_BY_IMAGE", review.user.images.jpg.image_url)
+                putExtra("REVIEW_BY_URL",review.user.url)
+
+                putExtra("REVIEW_OVERALL", review.scores.overall)
+                putExtra("REVIEW_STORY",review.scores.story)
+                putExtra("REVIEW_CHARACTER", review.scores.character)
+                putExtra("REVIEW_ENJOYMENT",review.scores.enjoyment)
+                putExtra("REVIEW_BODY", review.review)
+                startActivity(this)
+            }
         }
     }
 
