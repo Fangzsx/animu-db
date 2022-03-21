@@ -11,6 +11,9 @@ import com.fangzsx.animu_db.models.review.Data
 
 class MangaReviewAdapter : RecyclerView.Adapter<MangaReviewAdapter.ReviewViewHolder>() {
 
+    var onItemClick : ((Data) -> Unit)? = null
+
+
     inner class ReviewViewHolder(val binding : MangaReviewItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Data>(){
@@ -50,6 +53,10 @@ class MangaReviewAdapter : RecyclerView.Adapter<MangaReviewAdapter.ReviewViewHol
             tvStoryManga.text =  "${reviewItem.scores.story}/10"
             tvMangaArt.text = "${reviewItem.scores.art}/10"
             tvReviewManga.text = "\"${reviewItem.review}\""
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(reviewItem)
         }
     }
 

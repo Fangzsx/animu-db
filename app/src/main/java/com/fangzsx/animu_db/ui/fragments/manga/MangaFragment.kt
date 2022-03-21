@@ -30,6 +30,7 @@ class MangaFragment : Fragment() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mangaFragmentVM = ViewModelProvider(this).get(MangaFragmentViewModel::class.java)
@@ -93,6 +94,10 @@ class MangaFragment : Fragment() {
         binding.rvRecentReviewsManga.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = mangaReviewAdapter
+        }
+
+        mangaReviewAdapter.onItemClick = {
+            Intent()
         }
     }
 
