@@ -17,7 +17,7 @@ class MangaCharFragmentViewModel : ViewModel() {
         val response = RetrofitInstance.malAPI.getMangaCharactersByID(id)
         if(response.isSuccessful){
             response.body()?.let {
-                _characters.postValue(it.data)
+                _characters.postValue(it.data.filter { char -> char.role.lowercase() == "main" })
             }
         }
     }
