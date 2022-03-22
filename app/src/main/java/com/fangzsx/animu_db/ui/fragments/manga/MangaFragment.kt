@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.ui.fragments.manga
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,8 @@ import com.fangzsx.animu_db.adapters.PopularMangaAdapter
 import com.fangzsx.animu_db.databinding.FragmentMangaBinding
 import com.fangzsx.animu_db.ui.activities.MangaActivity
 import com.fangzsx.animu_db.ui.activities.MangaReviewActivity
-import com.fangzsx.animu_db.ui.activities.ReviewActivity
+import com.fangzsx.animu_db.ui.activities.SearchAnimeActivity
+import com.fangzsx.animu_db.ui.activities.SearchMangaActivity
 import com.fangzsx.animu_db.viewmodels.manga.MangaFragmentViewModel
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
@@ -50,9 +52,23 @@ class MangaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Handler().postDelayed({
+            mangaFragmentVM.getMangaReviews()
+            mangaFragmentVM.getTopManga()
+            mangaFragmentVM.getMangaRecommendation()
+        },250)
+
+
+        binding.ivSearch.setOnClickListener {
+            Intent(activity, SearchMangaActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+
         imageSliderAdapter = ImageSliderAdapter()
         loadingState()
-
         setUpRecyclerViews()
 
     }

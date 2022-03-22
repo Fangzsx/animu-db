@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.fangzsx.animu_db.models.recommendation.Data
 import com.fangzsx.animu_db.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
+import java.util.logging.Handler
 
 class MangaFragmentViewModel : ViewModel() {
 
@@ -24,14 +25,7 @@ class MangaFragmentViewModel : ViewModel() {
     val manga : LiveData<com.fangzsx.animu_db.models.manga.Data> = _manga
 
 
-    init {
-        getTopManga()
-        getMangaRecommendation()
-        getMangaReviews()
-
-    }
-
-    private fun getMangaRecommendation() = viewModelScope.launch {
+    fun getMangaRecommendation() = viewModelScope.launch {
         val response = RetrofitInstance.malAPI.getMangaRecommendation()
         if(response.isSuccessful){
             response.body()?.let{ recommendationsResponse ->
@@ -40,7 +34,7 @@ class MangaFragmentViewModel : ViewModel() {
         }
     }
 
-    private fun getTopManga() = viewModelScope.launch {
+    fun getTopManga() = viewModelScope.launch {
         val response = RetrofitInstance.malAPI.getTopManga()
         if(response.isSuccessful){
             response.body()?.let{ topMangaResponse ->

@@ -51,7 +51,7 @@ class MangaActivity : AppCompatActivity() {
                     tab.text = "INFO"
                 }
                 1 -> {
-                    tab.text = "CHARACTERS"
+                    tab.text = "MAIN CHARACTERS"
                 }
             }
         }.attach()

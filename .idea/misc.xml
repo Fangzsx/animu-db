@@ -10,6 +10,7 @@
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/activity_manga_review.xml" value="0.25" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/activity_review.xml" value="0.4346820809248555" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/activity_search.xml" value="0.22" />
+        <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/activity_search_manga.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/anime_character_item.xml" value="0.33" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/anime_review_item.xml" value="0.22" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_anime.xml" value="0.19583333333333333" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/image_slider_item_layout.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/manga_char_item.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/manga_review_item.xml" value="0.33" />
+        <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/manga_search_result_item.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/popular_anime_item.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/popular_item.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/popular_manga_item.xml" value="0.19583333333333333" />

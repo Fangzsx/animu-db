@@ -8,6 +8,7 @@ import com.fangzsx.animu_db.models.manga.MangaResponse
 import com.fangzsx.animu_db.models.popular.PopularAnimeResponse
 import com.fangzsx.animu_db.models.recommendation.RecommendationsResponse
 import com.fangzsx.animu_db.models.searchAnime.SearchAnimeResponse
+import com.fangzsx.animu_db.models.searchManga.SearchMangaResponse
 import com.fangzsx.animu_db.models.topcharacters.TopCharactersResponse
 import com.fangzsx.animu_db.models.topmanga.TopMangaResponse
 import retrofit2.Response
@@ -74,6 +75,12 @@ interface MALapi {
     suspend fun getMangaCharactersByID(
         @Path("id") id : Int
     ) : Response<AnimeCharactersResponse>
+
+    @GET("/v4/manga")
+    suspend fun searchMangaTitlesByQuery(
+        @Query("q")
+        title : String
+    ) : Response<SearchMangaResponse>
 
 
 }

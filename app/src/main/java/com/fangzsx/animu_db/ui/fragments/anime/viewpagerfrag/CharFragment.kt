@@ -45,7 +45,12 @@ class CharFragment : Fragment() {
         animeCharVM.getCharactersByAnimeID(id)
         animeCharVM.characters.observe(viewLifecycleOwner){ characterList ->
 
-            charactersAdapter.differ.submitList(characterList)
+            if(characterList.isNotEmpty()){
+                charactersAdapter.differ.submitList(characterList)
+            }else{
+                binding.tvNoResult.visibility = View.VISIBLE
+            }
+
         }
 
         binding.rvCharacters.apply{

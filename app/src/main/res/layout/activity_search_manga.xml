@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.SearchAnimeActivity">
+    tools:context=".ui.activities.SearchMangaActivity">
 
     <TextView
-        android:id="@+id/tv_search"
+        android:id="@+id/tv_search_manga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
@@ -57,10 +57,10 @@
         app:iconifiedByDefault="false"
         android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/tv_search"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_search_manga"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_results"
+        android:id="@+id/rv_results_manga"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_10sdp"

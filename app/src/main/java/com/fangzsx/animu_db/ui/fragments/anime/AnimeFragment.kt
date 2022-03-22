@@ -6,29 +6,20 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.CursorAdapter
-import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.adapters.AnimeReviewAdapter
 import com.fangzsx.animu_db.adapters.PopularAnimeAdapter
 import com.fangzsx.animu_db.adapters.RecommendationsAdapter
 import com.fangzsx.animu_db.adapters.TopCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentAnimeBinding
-import com.fangzsx.animu_db.models.anime.Data
 import com.fangzsx.animu_db.ui.activities.AnimeActivity
 import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.ui.activities.ReviewActivity
-import com.fangzsx.animu_db.ui.activities.SearchActivity
+import com.fangzsx.animu_db.ui.activities.SearchAnimeActivity
 import com.fangzsx.animu_db.viewmodels.anime.AnimeFragmentViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 
 class AnimeFragment : Fragment() {
@@ -67,7 +58,7 @@ class AnimeFragment : Fragment() {
         loadTopCharactersAfter4Seconds()
 
         binding.ivSearch.setOnClickListener {
-            Intent(activity, SearchActivity::class.java).also {
+            Intent(activity, SearchAnimeActivity::class.java).also {
                 startActivity(it)
             }
         }

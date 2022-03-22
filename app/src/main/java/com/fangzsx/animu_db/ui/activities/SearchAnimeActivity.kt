@@ -3,7 +3,6 @@ package com.fangzsx.animu_db.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +11,7 @@ import com.fangzsx.animu_db.adapters.SearchResultsAdapter
 import com.fangzsx.animu_db.databinding.ActivitySearchBinding
 import com.fangzsx.animu_db.viewmodels.anime.SearchActivityViewModel
 
-class SearchActivity : AppCompatActivity() {
+class SearchAnimeActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySearchBinding
     private lateinit var searchVM : SearchActivityViewModel
     private lateinit var searchResultAdapter : SearchResultsAdapter
@@ -36,7 +35,7 @@ class SearchActivity : AppCompatActivity() {
                     loadingState()
 
                     searchVM.getAnimeTitlesByQuery(q)
-                    searchVM.searchResults.observe(this@SearchActivity){ results ->
+                    searchVM.searchResults.observe(this@SearchAnimeActivity){ results ->
                         
                         if(results.isNotEmpty()){
                             searchResultAdapter.differ.submitList(results.sortedBy { it.popularity })
@@ -80,12 +79,12 @@ class SearchActivity : AppCompatActivity() {
     private fun setUpResultsRecyclerView() {
 
         binding.rvResults.apply {
-            layoutManager = GridLayoutManager(this@SearchActivity, 2, GridLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(this@SearchAnimeActivity, 2, GridLayoutManager.VERTICAL, false)
             adapter = searchResultAdapter
         }
 
         searchResultAdapter.onItemClick = { animeSearchedData ->
-            Intent(this@SearchActivity, AnimeActivity::class.java).apply {
+            Intent(this@SearchAnimeActivity, AnimeActivity::class.java).apply {
                 putExtra("MAL_ID", animeSearchedData.mal_id)
                 putExtra("ANIME_IMAGE_URL", animeSearchedData.images.jpg.large_image_url)
                 putExtra("ANIME_TITLE", animeSearchedData.title)
