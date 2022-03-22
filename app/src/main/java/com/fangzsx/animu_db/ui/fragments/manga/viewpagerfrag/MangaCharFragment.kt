@@ -1,15 +1,18 @@
 package com.fangzsx.animu_db.ui.fragments.manga.viewpagerfrag
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.adapters.MangaCharactersAdapter
 import com.fangzsx.animu_db.databinding.FragmentMangaCharBinding
+import com.fangzsx.animu_db.ui.activities.CharacterActivity
 import com.fangzsx.animu_db.viewmodels.manga.MangaCharFragmentViewModel
 
 
@@ -47,6 +50,13 @@ class MangaCharFragment : Fragment() {
         binding.rvCharactersManga.apply {
             layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
             adapter = charactersAdapter
+        }
+        
+        charactersAdapter.onItemClick = { charData ->
+            Intent(activity, CharacterActivity::class.java).apply {
+                putExtra("CHAR_ID",charData.mal_id)
+                startActivity(this)
+            }
         }
 
 
