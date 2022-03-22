@@ -2,4 +2,6 @@
     <string name="app_name">animu-db</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="API_KEY">AIzaSyBrH7VTA4nFMix6UAZQ7-G8kwGfmyUx-4o</string>
+
 </resources>

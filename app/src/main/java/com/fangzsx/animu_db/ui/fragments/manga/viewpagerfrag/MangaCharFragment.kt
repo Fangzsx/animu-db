@@ -43,7 +43,13 @@ class MangaCharFragment : Fragment() {
 
         mangaCharVM.getMangaCharactersByID(id)
         mangaCharVM.characters.observe(viewLifecycleOwner){ listOfCharacters ->
-            charactersAdapter.differ.submitList(listOfCharacters)
+
+            if(listOfCharacters.isNotEmpty()){
+                charactersAdapter.differ.submitList(listOfCharacters)
+            }else{
+                binding.tvNoResult.visibility = View.VISIBLE
+            }
+
 
         }
 

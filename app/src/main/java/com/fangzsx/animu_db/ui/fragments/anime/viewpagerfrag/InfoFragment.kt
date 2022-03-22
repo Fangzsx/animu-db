@@ -79,10 +79,19 @@ class InfoFragment : Fragment(){
             tvScore.text = animeData.score.toString()
             tvSynopsis.text = animeData.synopsis
 
+
             if (animeData.trailer.youtube_id != null) {
+                Toast.makeText(activity, "Original Trailer", Toast.LENGTH_SHORT).show()
                 playTrailer(animeData.trailer.youtube_id)
             } else {
-                Toast.makeText(activity, "Trailer not available.", Toast.LENGTH_SHORT).show()
+                //search for video on youtube using api]
+                Toast.makeText(activity, "Alternate Trailer", Toast.LENGTH_LONG).show()
+                animeInfoVM.getYoutubeTrailerID("${animeData.title_english} anime trailer")
+                animeInfoVM.youtubeID.observe(viewLifecycleOwner){
+                    for(item in it){
+                        playTrailer(item.id.videoId)
+                    }
+                }
             }
 
         }

@@ -22,4 +22,22 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <TextView
+        android:id="@+id/tv_no_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12sdp"
+        android:text="No data found."
+        android:gravity="center"
+        android:fontFamily="@font/sans"
+        android:textColor="@color/blue"
+        android:drawableTint="@color/red"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:drawableEndCompat="@drawable/no_result" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
