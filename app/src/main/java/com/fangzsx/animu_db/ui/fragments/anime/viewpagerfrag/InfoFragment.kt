@@ -86,7 +86,7 @@ class InfoFragment : Fragment(){
             } else {
                 //search for video on youtube using api]
                 Toast.makeText(activity, "Alternate Trailer", Toast.LENGTH_LONG).show()
-                animeInfoVM.getYoutubeTrailerID("${animeData.title_english} anime trailer")
+                animeInfoVM.getYoutubeTrailerID("${animeData.title} anime trailer")
                 animeInfoVM.youtubeID.observe(viewLifecycleOwner){
                     for(item in it){
                         playTrailer(item.id.videoId)
