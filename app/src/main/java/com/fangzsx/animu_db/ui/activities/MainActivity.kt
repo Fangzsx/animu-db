@@ -1,10 +1,6 @@
 package com.fangzsx.animu_db.ui.activities
 
-import android.annotation.TargetApi
-import android.os.Build
 import android.os.Bundle
-import android.webkit.PermissionRequest
-import android.webkit.WebChromeClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -17,11 +13,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding  = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navController = Navigation.findNavController(this, R.id.navHostFragment)
         NavigationUI.setupWithNavController(binding.btmNavigation, navController)
-
-
     }
 }
