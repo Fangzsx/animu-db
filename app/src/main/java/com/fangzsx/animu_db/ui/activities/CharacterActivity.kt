@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
@@ -28,29 +29,33 @@ class CharacterActivity : AppCompatActivity() {
 
 
         loadingState()
-        val charID = intent.getIntExtra("CHAR_ID", 0)
 
-        characterVM.getCharacterByID(charID)
-        characterVM.character.observeOnce(this) { charData ->
+        Handler().postDelayed({
+            val charID = intent.getIntExtra("CHAR_ID", 0)
 
-            charData?.let {
-                binding.apply {
+            characterVM.getCharacterByID(charID)
+            characterVM.character.observeOnce(this) { charData ->
 
-                    clToolbar.title = charData.name
+                charData?.let {
+                    binding.apply {
 
-                    Glide
-                        .with(this@CharacterActivity)
-                        .load(charData.images.jpg.image_url)
-                        .into(ivCharImage)
-                    tvFullname.text = charData.name
-                    tvFullnameKanji.text = charData.name_kanji
-                    tvNicknames.text = charData.nicknames.toString()
-                    tvAbout.text = charData.about
+                        clToolbar.title = charData.name
 
+                        Glide
+                            .with(this@CharacterActivity)
+                            .load(charData.images.jpg.image_url)
+                            .into(ivCharImage)
+                        tvFullname.text = charData.name
+                        tvFullnameKanji.text = charData.name_kanji
+                        tvNicknames.text = charData.nicknames.toString()
+                        tvAbout.text = charData.about
+
+                    }
+                    successState()
                 }
-                successState()
             }
-        }
+        },500)
+
 
     }
     private fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {

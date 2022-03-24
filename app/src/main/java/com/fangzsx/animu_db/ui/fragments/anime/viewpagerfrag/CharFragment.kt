@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,7 +46,7 @@ class CharFragment : Fragment() {
         val id = requireActivity().intent.getIntExtra("MAL_ID", 0)
 
         animeCharVM.getCharactersByAnimeID(id)
-        animeCharVM.characters.observe(viewLifecycleOwner){ characterList ->
+        animeCharVM.characters.observeOnce(viewLifecycleOwner){ characterList ->
 
             if(characterList.isNotEmpty()){
                 charactersAdapter.differ.submitList(characterList)
@@ -64,6 +67,14 @@ class CharFragment : Fragment() {
                 startActivity(this)
             }
         }
+    }
+    private fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+        observe(lifecycleOwner, object : Observer<T> {
+            override fun onChanged(t: T?) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        })
     }
 
 }

@@ -9,9 +9,4 @@
         android:id="@+id/mangaFragment"
         android:title="Manga"
         android:icon="@drawable/manga"/>
-    <item
-        android:id="@+id/favoritesFragment"
-        android:title="Favorites"
-        android:icon="@drawable/favorites"/>
-
 </menu>

@@ -1,10 +1,10 @@
 package com.fangzsx.animu_db.ui.activities
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.fangzsx.animu_db.R
 import com.fangzsx.animu_db.adapters.vp.AnimeViewPagerAdapter
 import com.fangzsx.animu_db.databinding.ActivityAnimeBinding
 import com.fangzsx.animu_db.viewmodels.anime.AnimeActivityViewModel
@@ -22,8 +22,8 @@ class AnimeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        animeVM = ViewModelProvider(this).get(AnimeActivityViewModel::class.java)
 
+        animeVM = ViewModelProvider(this).get(AnimeActivityViewModel::class.java)
 
         val animeIMG = intent.getStringExtra("ANIME_IMAGE_URL")
         val animeTitle = intent.getStringExtra("ANIME_TITLE")

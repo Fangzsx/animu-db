@@ -45,7 +45,7 @@
                 android:fontFamily="@font/sans"
                 android:textSize="@dimen/_12sdp"
                 android:ellipsize="marquee"
-                android:maxLength="35"
+                android:singleLine="true"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="@id/tv_original_title_manga_label"
                 app:layout_constraintStart_toEndOf="@id/tv_original_title_manga_label"/>

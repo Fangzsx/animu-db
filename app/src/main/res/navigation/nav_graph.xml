@@ -15,9 +15,4 @@
         android:name="com.fangzsx.animu_db.ui.fragments.manga.MangaFragment"
         android:label="fragment_manga"
         tools:layout="@layout/fragment_manga" />
-    <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.fangzsx.animu_db.ui.fragments.favorites.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
 </navigation>

@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.fangzsx.animu_db.databinding.FragmentInfoBinding
@@ -54,17 +57,20 @@ class InfoFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         loadingState()
-        val id = requireActivity().intent.getIntExtra("MAL_ID",0)
-        if(id != 0){ //meaning the id exist
-            animeInfoVM.getAnimeById(id)
-            animeInfoVM.anime.observe(viewLifecycleOwner){ animeData ->
 
-                bindDataToView(animeData)
-                successState()
+        Handler().postDelayed({
+            val id = requireActivity().intent.getIntExtra("MAL_ID",0)
+            if(id != 0){ //meaning the id exist
+                animeInfoVM.getAnimeById(id)
+                animeInfoVM.anime.observeOnce(viewLifecycleOwner){ animeData ->
+
+                    bindDataToView(animeData)
+                    successState()
+                }
+            }else{
+                Log.e("CHAR_INFO_FRAGMENT", "An error occurred.")
             }
-        }else{
-            Log.e("CHAR_INFO_FRAGMENT", "An error occurred.")
-        }
+        },500)
     }
 
     private fun bindDataToView(animeData: Data) {
@@ -169,5 +175,14 @@ class InfoFragment : Fragment(){
             tvSynopsisLabel.visibility = View.INVISIBLE
             tvSynopsis.visibility = View.INVISIBLE
         }
+    }
+
+    private fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+        observe(lifecycleOwner, object : Observer<T> {
+            override fun onChanged(t: T?) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        })
     }
 }

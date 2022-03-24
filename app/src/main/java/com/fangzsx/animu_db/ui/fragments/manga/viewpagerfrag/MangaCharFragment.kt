@@ -2,6 +2,7 @@ package com.fangzsx.animu_db.ui.fragments.manga.viewpagerfrag
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,32 +42,35 @@ class MangaCharFragment : Fragment() {
         val id = requireActivity().intent.getIntExtra("MAL_ID", 0)
 
 
-        mangaCharVM.getMangaCharactersByID(id)
-        mangaCharVM.characters.observe(viewLifecycleOwner){ listOfCharacters ->
+        Handler().postDelayed({
+            mangaCharVM.getMangaCharactersByID(id)
+            mangaCharVM.characters.observe(viewLifecycleOwner){ listOfCharacters ->
 
-            if(listOfCharacters.isNotEmpty()){
-                charactersAdapter.differ.submitList(listOfCharacters)
-            }else{
-                binding.tvNoResult.visibility = View.VISIBLE
+                if(listOfCharacters.isNotEmpty()){
+                    charactersAdapter.differ.submitList(listOfCharacters)
+                }else{
+                    binding.tvNoResult.visibility = View.VISIBLE
+                }
             }
+            setUpCharactersRecyclerView()
+        },500)
 
 
-        }
 
+    }
+
+    private fun setUpCharactersRecyclerView() {
         binding.rvCharactersManga.apply {
             layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
             adapter = charactersAdapter
         }
-        
+
         charactersAdapter.onItemClick = { charData ->
             Intent(activity, CharacterActivity::class.java).apply {
-                putExtra("CHAR_ID",charData.mal_id)
+                putExtra("CHAR_ID", charData.mal_id)
                 startActivity(this)
             }
         }
-
-
-
     }
 
 

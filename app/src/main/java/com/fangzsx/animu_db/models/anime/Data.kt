@@ -1,12 +1,15 @@
 package com.fangzsx.animu_db.models.anime
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "anime"
 )
 
 data class Data(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int= 0,
     val aired: Aired,
     val airing: Boolean,
     val background: String,
