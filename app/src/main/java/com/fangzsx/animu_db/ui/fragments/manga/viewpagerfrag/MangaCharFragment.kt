@@ -53,7 +53,7 @@ class MangaCharFragment : Fragment() {
                 }
             }
             setUpCharactersRecyclerView()
-        },500)
+        },1000)
 
 
 

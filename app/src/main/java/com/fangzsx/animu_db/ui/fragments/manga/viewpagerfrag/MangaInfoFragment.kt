@@ -47,7 +47,7 @@ class MangaInfoFragment : Fragment() {
                 setDataIntoView(mangaData)
                 successState()
             }
-        },500)
+        },1000)
 
     }
 
