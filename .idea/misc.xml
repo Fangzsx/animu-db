@@ -14,10 +14,13 @@
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/anime_character_item.xml" value="0.33" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/anime_review_item.xml" value="0.22" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_anime.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_anime_favorites.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_char.xml" value="0.22" />
+        <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_favorites.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_info.xml" value="0.22" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_manga.xml" value="0.22" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_manga_char.xml" value="0.22" />
+        <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_manga_favorites.xml" value="0.1859375" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/fragment_manga_info.xml" value="0.25" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/image_slider_item_layout.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/jygrz/animu-db/app/src/main/res/layout/manga_char_item.xml" value="0.19427083333333334" />
