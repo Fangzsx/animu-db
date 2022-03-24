@@ -1,5 +1,11 @@
 package com.fangzsx.animu_db.models.anime
 
+import androidx.room.Entity
+
+@Entity(
+    tableName = "anime"
+)
+
 data class Data(
     val aired: Aired,
     val airing: Boolean,
